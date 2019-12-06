@@ -1,0 +1,309 @@
+\hypertarget{classCFileManager}{}\section{C\+File\+Manager Class Reference}
+\label{classCFileManager}\index{C\+File\+Manager@{C\+File\+Manager}}
+
+
+Inheritance diagram for C\+File\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{classCFileManager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for C\+File\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{classCFileManager__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCFileManager_a81677308474f52a81f3bf1bf3738a459}\label{classCFileManager_a81677308474f52a81f3bf1bf3738a459}} 
+void \hyperlink{classCFileManager_a81677308474f52a81f3bf1bf3738a459}{create\+Conf\+File} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCFileManager_a81677308474f52a81f3bf1bf3738a459}{C\+File\+Manager\+::create\+Conf\+File} function will create a \char`\"{}.\+conf\char`\"{} file with based structure" (1. line) \%\% (2. line) \%\% (3. line) \%\%. \end{DoxyCompactList}\item 
+void \hyperlink{classCFileManager_a229c63a0823679b11e34d27f72b18b1b}{upload\+Token\+To\+File} (Q\+Byte\+Array)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCFileManager_a229c63a0823679b11e34d27f72b18b1b}{C\+File\+Manager\+::upload\+Token\+To\+File} will extract token from response array and store to a file. If token already exists in a file, function will replace with new one. \end{DoxyCompactList}\item 
+bool \hyperlink{classCFileManager_a4021ce0a385bcf0068dff7161e96999d}{get\+Token\+From\+File} (Q\+String \&token)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCFileManager_a4021ce0a385bcf0068dff7161e96999d}{C\+File\+Manager\+::get\+Token\+From\+File} function will extract token from a \char`\"{}.\+conf\char`\"{} file. \end{DoxyCompactList}\item 
+bool \hyperlink{classCFileManager_ab509134180d95af83a5ad7bd51f8f9ed}{token\+Avaliable} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCFileManager_ab509134180d95af83a5ad7bd51f8f9ed}{C\+File\+Manager\+::token\+Avaliable} finction decides if token is a good string or not. Requirements for a good string\+: -\/ lenght should equals 35 (as 2 for delimiter, 32 for token and 1 for new line) \end{DoxyCompactList}\item 
+void \hyperlink{classCFileManager_a4722bc73ddd3e128774856beea01c61e}{save\+Name\+To\+File} (Q\+Byte\+Array)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCFileManager_a4722bc73ddd3e128774856beea01c61e}{C\+File\+Manager\+::save\+Name\+To\+File} Function will save user\textquotesingle{}s name to a \char`\"{}.\+conf\char`\"{} file. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classCFileManager_afe80a483037c156eaa4fd6ee7fb51b29}{get\+Name\+From\+File} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCFileManager_afe80a483037c156eaa4fd6ee7fb51b29}{C\+File\+Manager\+::get\+Name\+From\+File} Function will extract user\textquotesingle{}s name from a \char`\"{}.\+conf\char`\"{} file. \end{DoxyCompactList}\item 
+void \hyperlink{classCFileManager_af7a175f29201617ed7d299747d5a3e0f}{update\+Desktop\+Names} (Q\+List$<$ Q\+Pair$<$ Q\+String, Q\+String $>$$>$)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCFileManager_af7a175f29201617ed7d299747d5a3e0f}{C\+File\+Manager\+::update\+Desktop\+Names} Updates \char`\"{}.\+conf\char`\"{} file with new or modified entries. (E.\+x. user has changed desktop\textquotesingle{}s name manually and function updates it). \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classCFileManager_a1c091b725f7040679f7d71de748a2335}{get\+Desktop\+Name\+By\+Number} (int)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCFileManager_a1c091b725f7040679f7d71de748a2335}{C\+File\+Manager\+::get\+Desktop\+Name\+By\+Number} Funcion looks into a file and searches for a desktop\textquotesingle{}s name by given order number. \end{DoxyCompactList}\item 
+list\+\_\+init \hyperlink{classCFileManager_a3478ad92b96489069a2ede4140de2ba6}{load\+Entries\+From\+File} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCFileManager_a3478ad92b96489069a2ede4140de2ba6}{C\+File\+Manager\+::load\+Entries\+From\+File} Function will extract all desktop\textquotesingle{}s entries from a \char`\"{}.\+conf\char`\"{} file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCFileManager_ace4d54eb4485f43b48040b5a35fd60fc}\label{classCFileManager_ace4d54eb4485f43b48040b5a35fd60fc}} 
+void \hyperlink{classCFileManager_ace4d54eb4485f43b48040b5a35fd60fc}{create\+Autorun\+File} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCFileManager_ace4d54eb4485f43b48040b5a35fd60fc}{C\+File\+Manager\+::create\+Autorun\+File} Function will create Autostart file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCFileManager_a5020ac99f7bd7436c138388106a0706b}\label{classCFileManager_a5020ac99f7bd7436c138388106a0706b}} 
+void \hyperlink{classCFileManager_a5020ac99f7bd7436c138388106a0706b}{check\+Autorun\+Dir\+Existance} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCFileManager_a5020ac99f7bd7436c138388106a0706b}{C\+File\+Manager\+::check\+Autorun\+Dir\+Existance} Function will check existance of directory for autostart applications. Will create this directory if doesn\textquotesingle{}t exist. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCFileManager_a77daf668e362bf0bc0d815bdb25e72f7}\label{classCFileManager_a77daf668e362bf0bc0d815bdb25e72f7}} 
+void \hyperlink{classCFileManager_a77daf668e362bf0bc0d815bdb25e72f7}{remove\+Autostart\+File} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCFileManager_a77daf668e362bf0bc0d815bdb25e72f7}{C\+File\+Manager\+::remove\+Autostart\+File} Function will remove file for autostart application. \end{DoxyCompactList}\item 
+void \hyperlink{classCFileManager_a59a238f3027f33473cfa1c2fe977521e}{load\+Setting\+Changes} (int, int)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCFileManager_a59a238f3027f33473cfa1c2fe977521e}{C\+File\+Manager\+::load\+Setting\+Changes} function will store changes to a \char`\"{}.\+cobfsettings\char`\"{} file for specified setting\textquotesingle{}s item. \end{DoxyCompactList}\item 
+vec\+\_\+set \hyperlink{classCFileManager_aa9590dcd3148754780c9e1fd8926e21d}{get\+Settings} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCFileManager_aa9590dcd3148754780c9e1fd8926e21d}{C\+File\+Manager\+::get\+Settings} Function will load setting from a \char`\"{}.\+confsettings\char`\"{} file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCFileManager_af287e5f6ee249c61088dd612923668df}\label{classCFileManager_af287e5f6ee249c61088dd612923668df}} 
+void \hyperlink{classCFileManager_af287e5f6ee249c61088dd612923668df}{remove\+All\+Conf\+Files} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCFileManager_af287e5f6ee249c61088dd612923668df}{C\+File\+Manager\+::remove\+All\+Conf\+Files} Function remove all configuration files. \end{DoxyCompactList}\item 
+void \hyperlink{classCFileManager_adb18dc95333090e9b1aff84fb9a98920}{delete\+Last\+Desktop} (int)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCFileManager_adb18dc95333090e9b1aff84fb9a98920}{C\+File\+Manager\+::delete\+Last\+Desktop} After user deletes desktop, function delete it too from a \char`\"{}.\+conf\char`\"{} file/. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCFileManager_adb18dc95333090e9b1aff84fb9a98920}\label{classCFileManager_adb18dc95333090e9b1aff84fb9a98920}} 
+\index{C\+File\+Manager@{C\+File\+Manager}!delete\+Last\+Desktop@{delete\+Last\+Desktop}}
+\index{delete\+Last\+Desktop@{delete\+Last\+Desktop}!C\+File\+Manager@{C\+File\+Manager}}
+\subsubsection{\texorpdfstring{delete\+Last\+Desktop()}{deleteLastDesktop()}}
+{\footnotesize\ttfamily void C\+File\+Manager\+::delete\+Last\+Desktop (\begin{DoxyParamCaption}\item[{int}]{desktops\+Number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCFileManager_adb18dc95333090e9b1aff84fb9a98920}{C\+File\+Manager\+::delete\+Last\+Desktop} After user deletes desktop, function delete it too from a \char`\"{}.\+conf\char`\"{} file/. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em desktops\+Number} & Actual desktops count. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classIA__CFileManager}{I\+A\+\_\+\+C\+File\+Manager}.
+
+\mbox{\Hypertarget{classCFileManager_a1c091b725f7040679f7d71de748a2335}\label{classCFileManager_a1c091b725f7040679f7d71de748a2335}} 
+\index{C\+File\+Manager@{C\+File\+Manager}!get\+Desktop\+Name\+By\+Number@{get\+Desktop\+Name\+By\+Number}}
+\index{get\+Desktop\+Name\+By\+Number@{get\+Desktop\+Name\+By\+Number}!C\+File\+Manager@{C\+File\+Manager}}
+\subsubsection{\texorpdfstring{get\+Desktop\+Name\+By\+Number()}{getDesktopNameByNumber()}}
+{\footnotesize\ttfamily Q\+String C\+File\+Manager\+::get\+Desktop\+Name\+By\+Number (\begin{DoxyParamCaption}\item[{int}]{number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCFileManager_a1c091b725f7040679f7d71de748a2335}{C\+File\+Manager\+::get\+Desktop\+Name\+By\+Number} Funcion looks into a file and searches for a desktop\textquotesingle{}s name by given order number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & Order number of desktop. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Name of finded desktop. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classIA__CFileManager}{I\+A\+\_\+\+C\+File\+Manager}.
+
+\mbox{\Hypertarget{classCFileManager_afe80a483037c156eaa4fd6ee7fb51b29}\label{classCFileManager_afe80a483037c156eaa4fd6ee7fb51b29}} 
+\index{C\+File\+Manager@{C\+File\+Manager}!get\+Name\+From\+File@{get\+Name\+From\+File}}
+\index{get\+Name\+From\+File@{get\+Name\+From\+File}!C\+File\+Manager@{C\+File\+Manager}}
+\subsubsection{\texorpdfstring{get\+Name\+From\+File()}{getNameFromFile()}}
+{\footnotesize\ttfamily Q\+String C\+File\+Manager\+::get\+Name\+From\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCFileManager_afe80a483037c156eaa4fd6ee7fb51b29}{C\+File\+Manager\+::get\+Name\+From\+File} Function will extract user\textquotesingle{}s name from a \char`\"{}.\+conf\char`\"{} file. 
+
+\begin{DoxyReturn}{Returns}
+User\textquotesingle{}s name. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classIA__CFileManager}{I\+A\+\_\+\+C\+File\+Manager}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCFileManager_afe80a483037c156eaa4fd6ee7fb51b29_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classCFileManager_aa9590dcd3148754780c9e1fd8926e21d}\label{classCFileManager_aa9590dcd3148754780c9e1fd8926e21d}} 
+\index{C\+File\+Manager@{C\+File\+Manager}!get\+Settings@{get\+Settings}}
+\index{get\+Settings@{get\+Settings}!C\+File\+Manager@{C\+File\+Manager}}
+\subsubsection{\texorpdfstring{get\+Settings()}{getSettings()}}
+{\footnotesize\ttfamily vec\+\_\+set C\+File\+Manager\+::get\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCFileManager_aa9590dcd3148754780c9e1fd8926e21d}{C\+File\+Manager\+::get\+Settings} Function will load setting from a \char`\"{}.\+confsettings\char`\"{} file. 
+
+\begin{DoxyReturn}{Returns}
+vec\+\_\+set type with\+:
+\begin{DoxyItemize}
+\item first\+: true if \char`\"{}.\+confsettings\char`\"{} file is availavle. False if is empty.
+\item second\+: empty Q\+Vector if first pair value is false. Vector with setting\textquotesingle{}s values if first value is true. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classIA__CFileManager}{I\+A\+\_\+\+C\+File\+Manager}.
+
+\mbox{\Hypertarget{classCFileManager_a4021ce0a385bcf0068dff7161e96999d}\label{classCFileManager_a4021ce0a385bcf0068dff7161e96999d}} 
+\index{C\+File\+Manager@{C\+File\+Manager}!get\+Token\+From\+File@{get\+Token\+From\+File}}
+\index{get\+Token\+From\+File@{get\+Token\+From\+File}!C\+File\+Manager@{C\+File\+Manager}}
+\subsubsection{\texorpdfstring{get\+Token\+From\+File()}{getTokenFromFile()}}
+{\footnotesize\ttfamily bool C\+File\+Manager\+::get\+Token\+From\+File (\begin{DoxyParamCaption}\item[{Q\+String \&}]{token }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCFileManager_a4021ce0a385bcf0068dff7161e96999d}{C\+File\+Manager\+::get\+Token\+From\+File} function will extract token from a \char`\"{}.\+conf\char`\"{} file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em token} & Q\+String value where will be stored token string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if token exists in a \char`\"{}.\+conf\char`\"{} file, overwise false. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classIA__CFileManager}{I\+A\+\_\+\+C\+File\+Manager}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCFileManager_a4021ce0a385bcf0068dff7161e96999d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classCFileManager_a3478ad92b96489069a2ede4140de2ba6}\label{classCFileManager_a3478ad92b96489069a2ede4140de2ba6}} 
+\index{C\+File\+Manager@{C\+File\+Manager}!load\+Entries\+From\+File@{load\+Entries\+From\+File}}
+\index{load\+Entries\+From\+File@{load\+Entries\+From\+File}!C\+File\+Manager@{C\+File\+Manager}}
+\subsubsection{\texorpdfstring{load\+Entries\+From\+File()}{loadEntriesFromFile()}}
+{\footnotesize\ttfamily list\+\_\+init C\+File\+Manager\+::load\+Entries\+From\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCFileManager_a3478ad92b96489069a2ede4140de2ba6}{C\+File\+Manager\+::load\+Entries\+From\+File} Function will extract all desktop\textquotesingle{}s entries from a \char`\"{}.\+conf\char`\"{} file. 
+
+\begin{DoxyReturn}{Returns}
+list\+\_\+init type -\/$>$ Q\+Pair$<$bool,Q\+List$<$Q\+Pair$<$\+Q\+String, Q\+String$>$$>$$>$\+: first -\/ true, if entries are available, false if doesn\textquotesingle{}t. second -\/ empty list, if first pair value is false. List with entries (desktop\textquotesingle{}s name, time), if firts pair value is true. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classIA__CFileManager}{I\+A\+\_\+\+C\+File\+Manager}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCFileManager_a3478ad92b96489069a2ede4140de2ba6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classCFileManager_a59a238f3027f33473cfa1c2fe977521e}\label{classCFileManager_a59a238f3027f33473cfa1c2fe977521e}} 
+\index{C\+File\+Manager@{C\+File\+Manager}!load\+Setting\+Changes@{load\+Setting\+Changes}}
+\index{load\+Setting\+Changes@{load\+Setting\+Changes}!C\+File\+Manager@{C\+File\+Manager}}
+\subsubsection{\texorpdfstring{load\+Setting\+Changes()}{loadSettingChanges()}}
+{\footnotesize\ttfamily void C\+File\+Manager\+::load\+Setting\+Changes (\begin{DoxyParamCaption}\item[{int}]{set\+\_\+id,  }\item[{int}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCFileManager_a59a238f3027f33473cfa1c2fe977521e}{C\+File\+Manager\+::load\+Setting\+Changes} function will store changes to a \char`\"{}.\+cobfsettings\char`\"{} file for specified setting\textquotesingle{}s item. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+\_\+id} & Setting\textquotesingle{}s item id. \\
+\hline
+{\em value} & Value to set in setting\textquotesingle{}s item. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classIA__CFileManager}{I\+A\+\_\+\+C\+File\+Manager}.
+
+\mbox{\Hypertarget{classCFileManager_a4722bc73ddd3e128774856beea01c61e}\label{classCFileManager_a4722bc73ddd3e128774856beea01c61e}} 
+\index{C\+File\+Manager@{C\+File\+Manager}!save\+Name\+To\+File@{save\+Name\+To\+File}}
+\index{save\+Name\+To\+File@{save\+Name\+To\+File}!C\+File\+Manager@{C\+File\+Manager}}
+\subsubsection{\texorpdfstring{save\+Name\+To\+File()}{saveNameToFile()}}
+{\footnotesize\ttfamily void C\+File\+Manager\+::save\+Name\+To\+File (\begin{DoxyParamCaption}\item[{Q\+Byte\+Array}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCFileManager_a4722bc73ddd3e128774856beea01c61e}{C\+File\+Manager\+::save\+Name\+To\+File} Function will save user\textquotesingle{}s name to a \char`\"{}.\+conf\char`\"{} file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & User\textquotesingle{}s name. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classIA__CFileManager}{I\+A\+\_\+\+C\+File\+Manager}.
+
+\mbox{\Hypertarget{classCFileManager_ab509134180d95af83a5ad7bd51f8f9ed}\label{classCFileManager_ab509134180d95af83a5ad7bd51f8f9ed}} 
+\index{C\+File\+Manager@{C\+File\+Manager}!token\+Avaliable@{token\+Avaliable}}
+\index{token\+Avaliable@{token\+Avaliable}!C\+File\+Manager@{C\+File\+Manager}}
+\subsubsection{\texorpdfstring{token\+Avaliable()}{tokenAvaliable()}}
+{\footnotesize\ttfamily bool C\+File\+Manager\+::token\+Avaliable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCFileManager_ab509134180d95af83a5ad7bd51f8f9ed}{C\+File\+Manager\+::token\+Avaliable} finction decides if token is a good string or not. Requirements for a good string\+: -\/ lenght should equals 35 (as 2 for delimiter, 32 for token and 1 for new line) 
+
+\begin{DoxyReturn}{Returns}
+true if token seems to be a good string, false overwise. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classIA__CFileManager}{I\+A\+\_\+\+C\+File\+Manager}.
+
+\mbox{\Hypertarget{classCFileManager_af7a175f29201617ed7d299747d5a3e0f}\label{classCFileManager_af7a175f29201617ed7d299747d5a3e0f}} 
+\index{C\+File\+Manager@{C\+File\+Manager}!update\+Desktop\+Names@{update\+Desktop\+Names}}
+\index{update\+Desktop\+Names@{update\+Desktop\+Names}!C\+File\+Manager@{C\+File\+Manager}}
+\subsubsection{\texorpdfstring{update\+Desktop\+Names()}{updateDesktopNames()}}
+{\footnotesize\ttfamily void C\+File\+Manager\+::update\+Desktop\+Names (\begin{DoxyParamCaption}\item[{Q\+List$<$ Q\+Pair$<$ Q\+String, Q\+String $>$$>$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCFileManager_af7a175f29201617ed7d299747d5a3e0f}{C\+File\+Manager\+::update\+Desktop\+Names} Updates \char`\"{}.\+conf\char`\"{} file with new or modified entries. (E.\+x. user has changed desktop\textquotesingle{}s name manually and function updates it). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & List of pairs with Desktop\textquotesingle{}s name and their time. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classIA__CFileManager}{I\+A\+\_\+\+C\+File\+Manager}.
+
+\mbox{\Hypertarget{classCFileManager_a229c63a0823679b11e34d27f72b18b1b}\label{classCFileManager_a229c63a0823679b11e34d27f72b18b1b}} 
+\index{C\+File\+Manager@{C\+File\+Manager}!upload\+Token\+To\+File@{upload\+Token\+To\+File}}
+\index{upload\+Token\+To\+File@{upload\+Token\+To\+File}!C\+File\+Manager@{C\+File\+Manager}}
+\subsubsection{\texorpdfstring{upload\+Token\+To\+File()}{uploadTokenToFile()}}
+{\footnotesize\ttfamily void C\+File\+Manager\+::upload\+Token\+To\+File (\begin{DoxyParamCaption}\item[{Q\+Byte\+Array}]{bytearray }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCFileManager_a229c63a0823679b11e34d27f72b18b1b}{C\+File\+Manager\+::upload\+Token\+To\+File} will extract token from response array and store to a file. If token already exists in a file, function will replace with new one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bytearray} & Array of format Q\+Byte\+Array taken from http response. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classIA__CFileManager}{I\+A\+\_\+\+C\+File\+Manager}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/sobaka/\+Client\+Toggl/src/cfilemanager.\+h\item 
+/home/sobaka/\+Client\+Toggl/src/cfilemanager.\+cpp\end{DoxyCompactItemize}

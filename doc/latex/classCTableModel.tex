@@ -1,0 +1,82 @@
+\hypertarget{classCTableModel}{}\section{C\+Table\+Model Class Reference}
+\label{classCTableModel}\index{C\+Table\+Model@{C\+Table\+Model}}
+
+
+Inheritance diagram for C\+Table\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{classCTableModel__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for C\+Table\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{classCTableModel__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCTableModel_aeef7a1f53915aaeef16892497c293baa}\label{classCTableModel_aeef7a1f53915aaeef16892497c293baa}} 
+void {\bfseries was\+Merged} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCTableModel_a90a4f47b3deee17620f563b55843e60e}\label{classCTableModel_a90a4f47b3deee17620f563b55843e60e}} 
+{\bfseries C\+Table\+Model} (Q\+List$<$ Q\+Pair$<$ Q\+String, Q\+String $>$ $>$ listof\+Pairs)
+\item 
+\mbox{\Hypertarget{classCTableModel_a85d37c586d1b743440c0c0e99ae6c215}\label{classCTableModel_a85d37c586d1b743440c0c0e99ae6c215}} 
+int {\bfseries row\+Count} (const Q\+Model\+Index \&) const override
+\item 
+\mbox{\Hypertarget{classCTableModel_a629a47650d025231a67c3fef84438566}\label{classCTableModel_a629a47650d025231a67c3fef84438566}} 
+int {\bfseries column\+Count} (const Q\+Model\+Index \&) const override
+\item 
+\mbox{\Hypertarget{classCTableModel_aecff04e7d37b8ae70dc996a2c08d4a6e}\label{classCTableModel_aecff04e7d37b8ae70dc996a2c08d4a6e}} 
+Q\+Variant {\bfseries data} (const Q\+Model\+Index \&, int) const override
+\item 
+\mbox{\Hypertarget{classCTableModel_a46ad1777009cf78da7d11ee36f0ede8c}\label{classCTableModel_a46ad1777009cf78da7d11ee36f0ede8c}} 
+Q\+Variant {\bfseries header\+Data} (int, Qt\+::\+Orientation, int) const override
+\item 
+\mbox{\Hypertarget{classCTableModel_ac53d179b21f93b0abb90d1e7499850bd}\label{classCTableModel_ac53d179b21f93b0abb90d1e7499850bd}} 
+Qt\+::\+Item\+Flags {\bfseries flags} (const Q\+Model\+Index \&) const override
+\item 
+\mbox{\Hypertarget{classCTableModel_ae6ebb2626b4094f05ea9f1fe60e56a98}\label{classCTableModel_ae6ebb2626b4094f05ea9f1fe60e56a98}} 
+bool {\bfseries set\+Data} (const Q\+Model\+Index \&index, const Q\+Variant \&value, int role=Qt\+::\+Display\+Role) override
+\item 
+\mbox{\Hypertarget{classCTableModel_a3f5bd4bd6da7c0f3d6c310023956f0ce}\label{classCTableModel_a3f5bd4bd6da7c0f3d6c310023956f0ce}} 
+bool {\bfseries insert\+Rows} (int, int, const Q\+Model\+Index \&) override
+\item 
+\mbox{\Hypertarget{classCTableModel_a7fac8a588eb9df36e38e10b91dd8648e}\label{classCTableModel_a7fac8a588eb9df36e38e10b91dd8648e}} 
+bool {\bfseries remove\+Rows} (int, int, const Q\+Model\+Index \&) override
+\item 
+\mbox{\Hypertarget{classCTableModel_ab74d634e24320e633cff015dde6c3cf8}\label{classCTableModel_ab74d634e24320e633cff015dde6c3cf8}} 
+Q\+List$<$ Q\+Pair$<$ Q\+String, Q\+String $>$ $>$ {\bfseries get\+List} (void) const override
+\item 
+\mbox{\Hypertarget{classCTableModel_ae665d7b9fdde310e94190bd733fd3e24}\label{classCTableModel_ae665d7b9fdde310e94190bd733fd3e24}} 
+Qt\+::\+Drop\+Actions {\bfseries supported\+Drop\+Actions} () const override
+\item 
+\mbox{\Hypertarget{classCTableModel_a31fa1543ac06e831d0493e1ead1eeb1a}\label{classCTableModel_a31fa1543ac06e831d0493e1ead1eeb1a}} 
+bool {\bfseries drop\+Mime\+Data} (const Q\+Mime\+Data $\ast$data, Qt\+::\+Drop\+Action action, int row, int column, const Q\+Model\+Index \&parent) override
+\item 
+\mbox{\Hypertarget{classCTableModel_a0b9525472c017cbde759a13feecd7182}\label{classCTableModel_a0b9525472c017cbde759a13feecd7182}} 
+Q\+Mime\+Data $\ast$ {\bfseries mime\+Data} (const Q\+Model\+Index\+List \&indexes) const override
+\item 
+\mbox{\Hypertarget{classCTableModel_aad5aa3a7eb4549fd3529d7238d3a1389}\label{classCTableModel_aad5aa3a7eb4549fd3529d7238d3a1389}} 
+Q\+String\+List {\bfseries mime\+Types} () const override
+\item 
+\mbox{\Hypertarget{classCTableModel_a4359887b8e4d9e9ed5bd840fd236c54a}\label{classCTableModel_a4359887b8e4d9e9ed5bd840fd236c54a}} 
+void {\bfseries set\+Merged} (bool status)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/sobaka/\+Client\+Toggl/src/ctablemodel.\+h\item 
+/home/sobaka/\+Client\+Toggl/src/ctablemodel.\+cpp\end{DoxyCompactItemize}

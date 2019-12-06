@@ -1,0 +1,3 @@
+<map id="CFileManager" name="CFileManager">
+<area shape="rect" id="node2" href="$classIA__CFileManager.html" title="{IA_CFileManager\n|# _appDirPath\l# _autostartPath\l# _appPath\l|+ ~IA_CFileManager()\l+ createConfFile()\l+ getTokenFromFile()\l+ updateDesktopNames()\l+ uploadTokenToFile()\l+ getDesktopNameByNumber()\l+ loadEntriesFromFile()\l+ createAutorunFile()\l+ checkAutorunDirExistance()\l+ removeAutostartFile()\land 11 more...\l}" alt="" coords="5,5,212,259"/>
+</map>

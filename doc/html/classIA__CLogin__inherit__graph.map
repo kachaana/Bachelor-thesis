@@ -1,0 +1,3 @@
+<map id="IA_CLogin" name="IA_CLogin">
+<area shape="rect" id="node3" href="$classCLogin.html" title="{CLogin\n|+ email\l+ password\l+ logInButton\l|+ CLogin()\l+ CLogin()\l+ operator=()\l+ setServer()\l+ authorizationSuccess()\l+ on_ButtonLogIn_clicked()\l+ showLoginFail()\l}" alt="" coords="5,315,187,509"/>
+</map>

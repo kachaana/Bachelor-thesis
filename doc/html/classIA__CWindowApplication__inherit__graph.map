@@ -1,0 +1,3 @@
+<map id="IA_CWindowApplication" name="IA_CWindowApplication">
+<area shape="rect" id="node3" href="$classCWindowApplication.html" title="{CWindowApplication\n|+ trayIcon\l+ startStopAction\l+ logoutAction\l+ showWindowAction\l+ exitAction\l+ goToWebAction\l|+ CWindowApplication()\l+ ~CWindowApplication()\l+ CWindowApplication()\l+ operator=()\l+ run()\l+ getUi()\l+ getTryIcon()\l+ setCToggl()\l+ setCFileanager()\l+ setServer()\l+ authorization()\l+ showDialogWindow()\l+ logOut()\l+ exit()\l+ goToWeb()\l+ openApp()\l+ showStartStopAction()\l}" alt="" coords="11,373,182,759"/>
+</map>

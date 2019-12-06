@@ -1,0 +1,88 @@
+\hypertarget{classIA__CTimeEntryList}{}\section{I\+A\+\_\+\+C\+Time\+Entry\+List Class Reference}
+\label{classIA__CTimeEntryList}\index{I\+A\+\_\+\+C\+Time\+Entry\+List@{I\+A\+\_\+\+C\+Time\+Entry\+List}}
+
+
+Inheritance diagram for I\+A\+\_\+\+C\+Time\+Entry\+List\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classIA__CTimeEntryList__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for I\+A\+\_\+\+C\+Time\+Entry\+List\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classIA__CTimeEntryList__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_a8890211043932977871bac1d9f1324ce}\label{classIA__CTimeEntryList_a8890211043932977871bac1d9f1324ce}} 
+{\bfseries I\+A\+\_\+\+C\+Time\+Entry\+List} (Q\+Widget $\ast$parent=nullptr)
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_a9c52cd6cfd6f8db9cfd0585b67b64bfb}\label{classIA__CTimeEntryList_a9c52cd6cfd6f8db9cfd0585b67b64bfb}} 
+virtual char $\ast$ {\bfseries get\+\_\+property} (Display $\ast$, Window, Atom, char $\ast$, unsigned long $\ast$)=0
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_adace93cf8cb107b2ec4222d4f011dbc1}\label{classIA__CTimeEntryList_adace93cf8cb107b2ec4222d4f011dbc1}} 
+virtual int {\bfseries get\+Number\+Of\+Desktops} ()=0
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_abd5d1a0aaa1d6ae59d6284cb729d07ba}\label{classIA__CTimeEntryList_abd5d1a0aaa1d6ae59d6284cb729d07ba}} 
+virtual int {\bfseries get\+Current\+Desktop} ()=0
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_af5d9397056e8089ee9715cf8d4c98976}\label{classIA__CTimeEntryList_af5d9397056e8089ee9715cf8d4c98976}} 
+virtual void {\bfseries set\+Time\+Entry\+Item} (\hyperlink{classIA__CTimeEntryItem}{I\+A\+\_\+\+C\+Time\+Entry\+Item} $\ast$new\+Time\+Entry\+Item)=0
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_a1be860ff30ca8db73ec75d92600f68a6}\label{classIA__CTimeEntryList_a1be860ff30ca8db73ec75d92600f68a6}} 
+virtual \hyperlink{classIA__CTimeEntryItem}{I\+A\+\_\+\+C\+Time\+Entry\+Item} $\ast$ {\bfseries get\+Time\+Entry\+Item} () const =0
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_a09a60884cc0432e0de8069ea4bb93920}\label{classIA__CTimeEntryList_a09a60884cc0432e0de8069ea4bb93920}} 
+virtual void {\bfseries set\+Is\+Start} (const bool state)=0
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_a91c9efe15b0882100bda9fa563cd5882}\label{classIA__CTimeEntryList_a91c9efe15b0882100bda9fa563cd5882}} 
+virtual bool {\bfseries get\+Is\+Start} () const =0
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_a548f3ca4e3c3aaaf05b43bf3289f0b1f}\label{classIA__CTimeEntryList_a548f3ca4e3c3aaaf05b43bf3289f0b1f}} 
+virtual void {\bfseries detect\+Desktops\+Property} ()=0
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_a24b34545f73e31fecadc7dbdfc556d78}\label{classIA__CTimeEntryList_a24b34545f73e31fecadc7dbdfc556d78}} 
+virtual void {\bfseries decrement\+Total\+Desktops\+Number} ()=0
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_a25f8a53f4d048492b61fca26b711270d}\label{classIA__CTimeEntryList_a25f8a53f4d048492b61fca26b711270d}} 
+Q\+Timer $\ast$ {\bfseries timer}
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_ad1ed878f7c91ef752eb4935278122d24}\label{classIA__CTimeEntryList_ad1ed878f7c91ef752eb4935278122d24}} 
+Q\+Vector$<$ Q\+Pair$<$ int, int $>$ $>$ {\bfseries vector\+Time}
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_a8e345bb320dc7b0947eb78e28e035cb0}\label{classIA__CTimeEntryList_a8e345bb320dc7b0947eb78e28e035cb0}} 
+Q\+Time {\bfseries time\+Start}
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_aaae0ad4aed8709bdf30e9537599f224c}\label{classIA__CTimeEntryList_aaae0ad4aed8709bdf30e9537599f224c}} 
+\hyperlink{classIA__CHTTPReceiver}{I\+A\+\_\+\+C\+H\+T\+T\+P\+Receiver} $\ast$ {\bfseries server}
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_a1d38e3e6709fc47155ca95432397fef6}\label{classIA__CTimeEntryList_a1d38e3e6709fc47155ca95432397fef6}} 
+\hyperlink{classIA__CTableModel}{I\+A\+\_\+\+C\+Table\+Model} $\ast$ {\bfseries table\+Model}
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_aa69b6e54b7d62ef2c2a0fd9b5d55f28c}\label{classIA__CTimeEntryList_aa69b6e54b7d62ef2c2a0fd9b5d55f28c}} 
+\hyperlink{classIA__CTimeEntryItem}{I\+A\+\_\+\+C\+Time\+Entry\+Item} $\ast$ {\bfseries \+\_\+time\+Entry\+Item}
+\item 
+\mbox{\Hypertarget{classIA__CTimeEntryList_aca02f413cd5ad573158999aae11e42b6}\label{classIA__CTimeEntryList_aca02f413cd5ad573158999aae11e42b6}} 
+\hyperlink{classIA__CFileManager}{I\+A\+\_\+\+C\+File\+Manager} $\ast$ {\bfseries \+\_\+file\+Manager}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/sobaka/\+Client\+Toggl/src/ia\+\_\+ctimeentrylist.\+h\item 
+/home/sobaka/\+Client\+Toggl/src/ia\+\_\+ctimeentrylist.\+cpp\end{DoxyCompactItemize}

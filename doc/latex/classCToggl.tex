@@ -1,0 +1,129 @@
+\hypertarget{classCToggl}{}\section{C\+Toggl Class Reference}
+\label{classCToggl}\index{C\+Toggl@{C\+Toggl}}
+
+
+Inheritance diagram for C\+Toggl\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classCToggl__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for C\+Toggl\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classCToggl__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classCToggl_a110c1e91012e0ce77c4d5df0b8dad9f1}{on\+\_\+\+Button\+Start\+\_\+clicked} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCToggl_a110c1e91012e0ce77c4d5df0b8dad9f1}{C\+Toggl\+::on\+\_\+\+Button\+Start\+\_\+clicked} Function will initiate all processes that shoul be triggered after button Start/\+Stop pushed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCToggl_a660325b24c851788649f0df06729fcf5}\label{classCToggl_a660325b24c851788649f0df06729fcf5}} 
+void \hyperlink{classCToggl_a660325b24c851788649f0df06729fcf5}{on\+\_\+\+Button\+Des\+\_\+clicked} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCToggl_a660325b24c851788649f0df06729fcf5}{C\+Toggl\+::on\+\_\+\+Button\+Des\+\_\+clicked} Desktop\textquotesingle{}s entries menu will be opened. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCToggl_a9d85700c7ec8c92b50ebd932d4b44dd1}\label{classCToggl_a9d85700c7ec8c92b50ebd932d4b44dd1}} 
+void \hyperlink{classCToggl_a9d85700c7ec8c92b50ebd932d4b44dd1}{on\+\_\+\+Button\+Settings\+\_\+clicked} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCToggl_a9d85700c7ec8c92b50ebd932d4b44dd1}{C\+Toggl\+::on\+\_\+\+Button\+Settings\+\_\+clicked} Settings menu will be opened. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCToggl_aaf46382c748a6c28e25c434ff7e82c64}\label{classCToggl_aaf46382c748a6c28e25c434ff7e82c64}} 
+void \hyperlink{classCToggl_aaf46382c748a6c28e25c434ff7e82c64}{update\+Table} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCToggl_aaf46382c748a6c28e25c434ff7e82c64}{C\+Toggl\+::update\+Table} Function will call updates method from \hyperlink{classCTableModel}{C\+Table\+Model} with period equal to T\+I\+M\+E\+R\+\_\+\+M\+\_\+\+S\+EC value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCToggl_acbc2868125a67897c26f41f98afa4920}\label{classCToggl_acbc2868125a67897c26f41f98afa4920}} 
+void \hyperlink{classCToggl_acbc2868125a67897c26f41f98afa4920}{calculate} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCToggl_acbc2868125a67897c26f41f98afa4920}{C\+Toggl\+::calculate} Function was created for switching timer due to desktop changing. Any icon should be changed and any buttons pushed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCToggl_a4554d8e2138df838fb305a76c1d2e65d}\label{classCToggl_a4554d8e2138df838fb305a76c1d2e65d}} 
+void {\bfseries value\+Changed} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCToggl_ab82713b4764520768307a35cb6213116}\label{classCToggl_ab82713b4764520768307a35cb6213116}} 
+{\bfseries C\+Toggl} (const \hyperlink{classCToggl}{C\+Toggl} \&)
+\item 
+\mbox{\Hypertarget{classCToggl_a5f46bb04d834bab9f77e933e8664698f}\label{classCToggl_a5f46bb04d834bab9f77e933e8664698f}} 
+\hyperlink{classCToggl}{C\+Toggl} \& {\bfseries operator=} (const \hyperlink{classCToggl}{C\+Toggl} \&)
+\item 
+\mbox{\Hypertarget{classCToggl_aa426ce9b0aea665fffdca26aeaf190b1}\label{classCToggl_aa426ce9b0aea665fffdca26aeaf190b1}} 
+void {\bfseries set\+Icon\+Stop\+Start} (Q\+System\+Tray\+Icon $\ast$icon)
+\item 
+\mbox{\Hypertarget{classCToggl_af3d7d562358471897c8017c0b567e389}\label{classCToggl_af3d7d562358471897c8017c0b567e389}} 
+void {\bfseries set\+Action} (Q\+Action $\ast$action)
+\item 
+\mbox{\Hypertarget{classCToggl_a18fb51b2a633a1c381f689d23dddc698}\label{classCToggl_a18fb51b2a633a1c381f689d23dddc698}} 
+bool {\bfseries get\+Is\+Start} () const
+\item 
+\mbox{\Hypertarget{classCToggl_ac3538c136f6bdd812eeed14b745c3466}\label{classCToggl_ac3538c136f6bdd812eeed14b745c3466}} 
+void {\bfseries set\+Settings\+Menu} (\hyperlink{classIA__CSettingsMenu}{I\+A\+\_\+\+C\+Settings\+Menu} $\ast$s\+Menu)
+\item 
+\mbox{\Hypertarget{classCToggl_ad982b7b0f9bd29a10110e4f4367830d0}\label{classCToggl_ad982b7b0f9bd29a10110e4f4367830d0}} 
+void {\bfseries set\+Time\+Entry\+List} (\hyperlink{classIA__CTimeEntryList}{I\+A\+\_\+\+C\+Time\+Entry\+List} $\ast$list)
+\item 
+\mbox{\Hypertarget{classCToggl_a18535c0cc1484cd32acd93013bb41d4f}\label{classCToggl_a18535c0cc1484cd32acd93013bb41d4f}} 
+void {\bfseries set\+File\+Manager} (\hyperlink{classIA__CFileManager}{I\+A\+\_\+\+C\+File\+Manager} $\ast$file\+Manager)
+\item 
+\mbox{\Hypertarget{classCToggl_af3fc8ea0bb454f3565bb936376d899ca}\label{classCToggl_af3fc8ea0bb454f3565bb936376d899ca}} 
+Q\+Timer $\ast$ {\bfseries get\+Timer\+Table} () const
+\item 
+\mbox{\Hypertarget{classCToggl_a57d5a99ec3a700375d4944356cd31334}\label{classCToggl_a57d5a99ec3a700375d4944356cd31334}} 
+\hyperlink{classIA__CTimeEntryList}{I\+A\+\_\+\+C\+Time\+Entry\+List} $\ast$ {\bfseries get\+Time\+Entry\+List} () const
+\item 
+\mbox{\Hypertarget{classCToggl_aadbaa69599ba88301d950b1516b804d7}\label{classCToggl_aadbaa69599ba88301d950b1516b804d7}} 
+void \hyperlink{classCToggl_aadbaa69599ba88301d950b1516b804d7}{set\+Username} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCToggl_aadbaa69599ba88301d950b1516b804d7}{C\+Toggl\+::set\+Username} Set user\textquotesingle{}s name to main window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCToggl_a8799d38062d9dc486100c90731d3de0a}\label{classCToggl_a8799d38062d9dc486100c90731d3de0a}} 
+Q\+Label $\ast$ {\bfseries user\+Name\+Label}
+\item 
+\mbox{\Hypertarget{classCToggl_ae185359645b26cc8153800c62045c74e}\label{classCToggl_ae185359645b26cc8153800c62045c74e}} 
+Q\+Push\+Button $\ast$ {\bfseries button\+Start}
+\item 
+\mbox{\Hypertarget{classCToggl_a1ccd521771e4e947fd35035350fbddfe}\label{classCToggl_a1ccd521771e4e947fd35035350fbddfe}} 
+Q\+Push\+Button $\ast$ {\bfseries button\+Des}
+\item 
+\mbox{\Hypertarget{classCToggl_a9178120cdd87b59ed114e4fc4f43d75a}\label{classCToggl_a9178120cdd87b59ed114e4fc4f43d75a}} 
+Q\+Push\+Button $\ast$ {\bfseries button\+Set}
+\item 
+\mbox{\Hypertarget{classCToggl_a4f2e98a9731ac37dd663ad2d408a0177}\label{classCToggl_a4f2e98a9731ac37dd663ad2d408a0177}} 
+bool {\bfseries icons\+Available}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCToggl_a110c1e91012e0ce77c4d5df0b8dad9f1}\label{classCToggl_a110c1e91012e0ce77c4d5df0b8dad9f1}} 
+\index{C\+Toggl@{C\+Toggl}!on\+\_\+\+Button\+Start\+\_\+clicked@{on\+\_\+\+Button\+Start\+\_\+clicked}}
+\index{on\+\_\+\+Button\+Start\+\_\+clicked@{on\+\_\+\+Button\+Start\+\_\+clicked}!C\+Toggl@{C\+Toggl}}
+\subsubsection{\texorpdfstring{on\+\_\+\+Button\+Start\+\_\+clicked}{on\_ButtonStart\_clicked}}
+{\footnotesize\ttfamily void C\+Toggl\+::on\+\_\+\+Button\+Start\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+\hyperlink{classCToggl_a110c1e91012e0ce77c4d5df0b8dad9f1}{C\+Toggl\+::on\+\_\+\+Button\+Start\+\_\+clicked} Function will initiate all processes that shoul be triggered after button Start/\+Stop pushed. 
+
+
+\begin{DoxyItemize}
+\item changes of icons (red/green)
+\item sending of time entries
+\item updating of changes in \char`\"{}.\+conf\char`\"{} file
+\item start/stop timer 
+\begin{DoxyParams}{Parameters}
+{\em action} & Can be B\+U\+T\+T\+O\+N\+P\+U\+S\+H\+Ed for manual stop/start. D\+E\+S\+K\+T\+O\+P\+C\+H\+A\+N\+G\+ED behaves the same but doesn\textquotesingle{}t change icons. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/sobaka/\+Client\+Toggl/src/ctoggl.\+h\item 
+/home/sobaka/\+Client\+Toggl/src/ctoggl.\+cpp\end{DoxyCompactItemize}

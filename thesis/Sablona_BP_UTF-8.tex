@@ -1,0 +1,1085 @@
+% options:
+% thesis=B bachelor's thesis
+% thesis=M master's thesis
+% czech thesis in Czech language
+% slovak thesis in Slovak language
+% english thesis in English language
+% hidelinks remove colour boxes around hyperlinks
+
+\documentclass[thesis=B,czech]{FITthesis}[2012/06/26]
+
+\usepackage[utf8]{inputenc} % LaTeX source encoded as UTF-8
+\usepackage{subcaption}
+\usepackage{graphicx} %graphics files inclusion
+% \usepackage{amsmath} %advanced maths
+% \usepackage{amssymb} %additional math symbols
+\usepackage{float}
+\usepackage{dirtree} %directory tree visualisation
+\usepackage{pdflscape}
+\usepackage{adjustbox}
+\usepackage{rotating}
+% % list of acronyms
+% \usepackage[acronym,nonumberlist,toc,numberedsection=autolabel]{glossaries}
+% \iflanguage{czech}{\renewcommand*{\acronymname}{Seznam pou{\v z}it{\' y}ch zkratek}}{}
+% \makeglossaries
+
+\newcommand{\tg}{\mathop{\mathrm{tg}}} %cesky tangens
+\newcommand{\cotg}{\mathop{\mathrm{cotg}}} %cesky cotangens
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% ODTUD DAL VSE ZMENTE
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+
+\department{Katedra softwarového inženýrství}
+\title{Měřič času stráveného na ploše KDE pomocí služby Toggl}
+\authorGN{Anastasiya} %(křestní) jméno (jména) autora
+\authorFN{Kachan} %příjmení autora
+\authorWithDegrees{Anastasiya Kachan} %jméno autora včetně současných akademických titulů
+\author{Anastasiya Kachan} %jméno autora bez akademických titulů
+\supervisor{Ondřej Guth}
+\acknowledgements{Chtěla bych tímto poděkovat vedoucímu mé práce Ing. Ondřeji Guthovi, Ph.D. za cenné rady,
+	trpělivost a ochotu pomoci při tvorbě této práce. Děkuji také celé své rodině a přátelům za
+	morální podporu.}
+\abstractCS{Cílem práce je navrhnout, implementovat a otestovat klient pro službu Toggl, jejíž hlavní vlastností je počítání času stráveného na každé virtuální ploše. Klient je určen uživateli desktopového prostředí KDE. Část návrhu je postavena na výsledcích získaných při analýze existujících aplikací a na analýze uživatelských požadavků. Implementační část popisuje technologii, která byla použita při realizaci programu. Klient je otestován klasickými metodami testování softwaru a ohodnocen uživateli pomocí testování použitelnosti.}
+
+\abstractEN{The aim of the thesis is to design, implement and test the client for Toggl service, whose main feature is counting the time spent on every virtual desktop. The client is determined for users of the KDE desktop environment. Section Design is based on the analysis results of existing applications and on analysis of user requirements. Section Implementation describes technologies, which were used during program implementation. The client is tested with the classic testing methods and rated by users with the help of usability test.}
+\placeForDeclarationOfAuthenticity{V~Praze}
+\declarationOfAuthenticityOption{4} %volba Prohlášení (číslo 1-6)
+\keywordsCS{Desktopový měřič, Klient Toggl, KDE, Plasma 5.\newpage}
+
+\keywordsEN{Desktop's tracker, Toggl Client, KDE, Plasma 5.}
+% \website{http://site.example/thesis} %volitelná URL práce, objeví se v tiráži - úplně odstraňte, nemáte-li URL práce
+
+\begin{document}
+
+% \newacronym{CVUT}{{\v C}VUT}{{\v C}esk{\' e} vysok{\' e} u{\v c}en{\' i} technick{\' e} v Praze}
+% \newacronym{FIT}{FIT}{Fakulta informa{\v c}n{\' i}ch technologi{\' i}}
+
+\begin{introduction}
+	V dnešní době je čas jednou z nejvýznaměších věcí našeho života. Je těžké najít čas na odpočinek nebo studium, ovšem ještě těžší je tento čas efektivně zorganizovat. Abychom tento čas dokázali najít, je vhodné se nejdříve zaměřit na to, kde jej ztrácíme. V tomto nám může pomoci statistika, kterou nabízí Toggl Service.
+	\par 
+	Tato bakalářská práce se zabývá návrhem a implementací aplikace, která dokáže daný problém vyřešit. Jistým specifikem je to, že daná aplikace bude určena pro uživatele prostředí KDE Plasma 5.
+	\par
+	Aplikace bude implementována jako desktopový měřič s využitím služby Toggl. Takový desktopový měřič bude řešit problém managementu času stráveného u počítače za předpokladu, že každý používaný desktop bude určen pro jeden druh aktivity (např. práce, studium, zábava atd.). Uživatel daného klientu se pomocí této aplikace bude moci poté zamyslet nad organizací svého času.
+	\par
+	Teoretická část této bakalářské práce se zabývá analýzou existujících řešení a použitím výsledků analýzy při návrhu cílové aplikace. Analýza vlastností bude provedena pouze u nejpopulárnějších trackerů. \par Praktická část pak zahrnuje implementaci aplikace podle návrhu rozpracovaného v teoretické části.
+	
+\end{introduction}
+
+\chapter{Cíl práce}
+	Cílem této bakalářské práce je návrh a implementace klientu služby Toggl pro prostředí KDE Plasma 5, jehož hlavní vlastností je zaznamenávání množství času stráveného na dané ploše. Klient bude počítat čas na každém z aktivních virtuálních desktopů a bude schopen synchronizace s účtem Toggl.
+	\par
+	Aplikace bude mít GUI, kde uživatel bude moci provádět jednotlivé akce jako sloučení a editace časových záznamů. Také umožní uživateli konfigurovat aplikaci podle vlastních potřeb. 
+	\par
+	Dalším cílem je umožnit, aby byl program šiřitelný pod vhodnou open-source licencí, a otestovat výsledný klient vhodnými prostředky.
+\chapter{Analýza}
+
+\section{Současná řešení}
+Za účelem porovnání Toggl trackeru jsem prozkoumala různé podobné měřiče času stráveného na ploše. Z důvodů existence velkého množství trackerů jsem musela řešit jen omezený počet. Trackery k porovnání jsem si vybírala podle popularity, tj. nejvyšších hodnot stažení, a podle žebříčku nejlepších trackerů posledních let sestaveného uživateli.
+
+\subsection{Služby Toggl}  
+
+Mezi nejoblíbenější měřiče času pro uživatele patří Toggl \cite{toggl}. Umožňuje přidání nekonečně mnoho záznamů anebo projektů, které se dají obarvit a vložit do nich další podzáznamy. Mezi hlavní výhody patří: 
+\begin{itemize}
+	\item na internetu dostupnost open source již existujících klientů a dokumentace,
+	\item integrace s velkým množstvím služeb,
+	\item přehledné uživatelské rozhraní.
+\end{itemize} 
+
+\begin{figure}[h]\centering
+	\includegraphics[width=0.9\textwidth]{toggl.jpg}
+	\caption[Klient Toggl pro Linux]{Klient Toggl pro Linux}\label{fig:toggl}
+\end{figure}
+
+Toggl je podporován jak webovými prohlížeči, tak i desktopovými a mobilními aplikacemi. Pokryty jsou skoro všechny platformy. Desktopová aplikace je dostupná pro systémy Windows, Linux (viz obrázek ~\ref{fig:toggl}) a Mac OS, mobilní aplikaci je možno stáhnout na Andriod a iOS. Kromě toho jsou dostupná tlačítka pro internetové prohlížeče Google Chrome a Mozilla.
+\newpage
+\subsection{RescueTime}
+
+Tento klient \cite{rescuetime} je jedním z nejpopulárnějších trackerů, který se skládá z aplikace pro sledování aktivity a online servisu. Je dostupný pro systémy Windows, Mac OS, Linux, existuje také mobilní aplikace pro Android (viz obrázky ~\ref{fig:rescuetime}, ~\ref{fig:rescuetime2}). \par
+Dalšími funkcemi kromě měření času RescueTime jsou možnost sledování aktivity aplikací a webových stránek, které navštěvuje uživatel. Následuje také možnost třídění do různých kategorií (např. komunikace, utility atd.), můžeme se tak dozvědět množství stráveného času při použití těchto konkrétních nástrojů. RescueTime nabízí 4 typy výkazů, tedy využívané aplikace a navštívené webové stránky, druh aktivity, produktivitu a cíle, a to ve formě diagramů.
+\par
+Doplňkovou funkcí je blokování přístupu na určité webové stránky v konkrétním časovém intervalu a blokování webových stránek z jedné i více kategorií. 
+
+\begin{figure}[h]\centering
+	\includegraphics[width=1\textwidth]{rescuetime.jpg}
+	\caption[Webová aplikace RescueTime]{Webová aplikace RescueTime}\label{fig:rescuetime}
+\end{figure}
+
+\begin{figure}[h]\centering
+	\includegraphics[width=0.35\textwidth]{rescuetime2.jpg}
+	\caption[Desktopový klient RescueTime]{Desktopový klient RescueTime}\label{fig:rescuetime2}
+\end{figure}
+
+\subsection{TopTracker}
+
+Stejně jako RescueTime se skládá z desktopového klientu a webového servisu. Tento tracker je vhodný pro týmové používání, protože do konkrétního projektu můžeme přidávat osoby a následně tak zjistit celkový čas strávený na projektu i dobu, kterou na něm pracoval každý člen týmu. Kromě základního měření času můžeme zaznamenávat podrobné zprávy o progresu.
+\par
+Další možností je zachycení screenshotu desktopu v pravidelných nebo náhodných intervalech a snímky z webcamery s možností rozmazání pro zachování konfidenciality.
+\par
+Webová verze a klient jsou dostupné pro systémy Windows, Mac OS X a Debian (viz obrázek ~\ref{fig:toptracker}).
+\par
+Nevýhodou tohoto klientu je neexistence mobilní aplikace pro Andriod a iOS \cite{toptracker}.
+\par
+\begin{figure}[h]\centering
+	\includegraphics[width=0.9\textwidth]{toptracker.jpg}
+	\caption[Klient TopTracker]{Klient TopTracker}\label{fig:toptracker}
+\end{figure}
+
+\subsection{TimeCamp}
+Desktopový klient pro Linux poskytuje stejné služby jako klienty pro Windows, Mac OS, jimiž jsou správa časových rozvrhů, analýza produktivity, automatické sledování použitých počítačových aplikaci, podrobná historie,  seznam nejvíce časově náročných webových stránek a aplikací, integrovaná platební brána, kalendář svátků \cite{timecamp}.
+\par
+TimeCamp má taká verzi v podobě mobilní aplikace pro Adnroid a iOS.
+\par
+Nevýhodou z mého pohledu je to, že se více zdůrazňuje webová verze (viz obrázek ~\ref{fig:timecamp}). Desktopová aplikace funguje na pozadí (sleduje aktivní pročítačové programy) a má chudé desktopové uživatelské rozhraní. 
+
+\begin{figure}[h]\centering
+	\includegraphics[width=1\textwidth]{timecamp3.jpg}
+	\caption[Webová aplikace TimeCamp]{Webová aplikace TimeCamp}\label{fig:timecamp}
+\end{figure}
+
+\subsection{Hubstaff}
+
+Hubstaff \cite{hubstaff} je vhodný jak pro jednoho uživatele, tak i pro kancelářskou práci v týmu stejně jako TopTracker. Tento nástroj je výhodný v oboustranném směru. Zaměstnavatel má možnost kontroly práce svých podřízených. Ze strany zaměstnanců výhoda spočívá v tom, že mohou být informováni o svých příjmech. Také je zde nabízena funkce zachycení screenshotu desktopu a sledování aktivních počítačových a webových aplikací pro vedení statistik.
+\par
+Hubstaff je jedním z nejpopulárnějších trackerů. Existují desktopové klienty pro Windows, Mac OS X, Linux (viz obrázek ~\ref{fig:hubstaff}) a mobilní aplikace pro Android a iOS. Dále má uživatel možnost instalace tohoto klientu do svého prohlížeče Google Chrome. 
+
+\begin{figure}[h]\centering
+	\includegraphics[width=0.8\textwidth]{hubstaff.jpg}
+	\caption[Desktopový klient Hubstaff]{Desktopový klient Hubstaff}\label{fig:hubstaff}
+\end{figure}
+
+\newpage
+\subsection{Souhrn}
+Seznámila jsem se s výše uvedenými měřiči času v podobě instalace klientů, do kterých jsem se přihlásila svým vlastním účtem, prozkoumala jsem je a zjistila, že ani jeden z nich neumožňuje automatickou detekci změny aktuální plochy v prostředí KDE Plasma 5 (jako i neumožňují ostatní měřiče pro unixové systémy). Více méně některé klienty jsou dobře zpracované, což může představovat inspiraci pro návrh a implementaci vlastního klientu. \\
+Pro přehlednost jsem vytvořila tabulku ~\ref{tab:compare} porovnání existujících měřičů mezi sebou.
+
+
+\begin{sidewaystable}
+	\caption{Přehled funkcí a vlastností trackerů}\label{tab:compare}
+	\begin{tabular}{|l|c|c|c|c|c|}
+			\hline
+		& RescueTime & TopTracker & TimeCamp & Hubstaff & Toggl \\ \hline
+		Přidávání lidí do týmu & - & + & + &  + & + \\ \hline
+		Klient pro Windows & + & + & + & + & + \\ \hline
+		Klient pro Mac OS & + & + & + & + & + \\ \hline
+		Klient pro Linux & + & + & + & + & + \\ \hline
+		Klient pro Android & + & - & + & + & + \\ \hline
+		Klient pro iOS & - & - & + & + & + \\ \hline
+		Připomínání & - & - & - & - & + \\ \hline
+		Sledování počítačových aplikací & + & - & + & - & +\\ a webových stránek & & & & & \\ \hline
+		Statistika & + & - & + & - & + \\ \hline
+		Screenshots & - & + & - & + & - \\ \hline
+		Blokování webových stránek & + & - & - & - & - \\ \hline
+		Integrace s platebním účtem & - & - & + & + & -\\ \hline
+		Export dat & + & - & - & + & + \\ \hline
+	\end{tabular}
+\end{sidewaystable}
+
+\section{Analýza požadavků}
+V této sekci jsou uvedeny požadavky na aplikace. Ke každému požadavku jsem definovala úroveň priority v závislosti na hlavním cíli úkolu.
+\subsection{Funkční požadavky}
+\begin{description} 
+	\item[F1 Přihlášení/Odhlášení] \hspace*{\fill} \\
+	Uživatel bude schopen se přihlásit ke svému účtu Toggl, pokud je připojen k internetu.
+	Respektive může se odhlásit. \par
+	\textit{Priorita: vysoká}
+	
+	\item[F2 Zobrazení záznamů] \hspace*{\fill} \\
+	Klient zobrazuje všechny existující záznamy v podobě Desktop\_1, Desktop\_2 atd. (pokud uživatel nezvolil jiné názvy, klient nabízí defaultní názvy desktopů). Počet záznamů odpovídá skutečnému počtu virtuálních ploch.
+	\par
+	\textit{Priorita: střední}
+	
+	\item[F3 Smazání/přidání záznamů] \hspace*{\fill} \\
+	Klient bude schopen reagovat na smazání uživatelovi virtuální plochy tím, že smaže poslední časový záznam (stejným způsobem klient bude schopen přidat nový záznam, pokud uživatel založí novou virtuální plochu). 
+	\par
+	\textit{Priorita: vysoká}
+	
+	\item[F4 Úprava záznamů] \hspace*{\fill} \\
+	Uživatel má možnost upravit záznamy (např. název).
+	\par
+	\textit{Priorita: střední}
+	
+	\item[F5 Spouštění/Zastavení měřiče] \hspace*{\fill} \\
+	Uživatel může spustit resp. zastavit měřič.
+	\par
+	\textit{Priorita: vysoká}
+	
+	\item[F6 Sloučení záznamů] \hspace*{\fill} \\
+	Uživatel má možnost sloučit vybrané záznamy do jednoho.
+	\par
+	\textit{Priorita: nízká}
+	
+	\item[F7 Detekce změny desktopu] \hspace*{\fill} \\
+	Klient bude schopen reagovat na přepnutí desktopu uživatelem tak, že se automaticky přepne na záznam týkající se nyní aktuálního desktopu (měřič předchozího záznamu se zastaví, nový se spustí). 
+	\par
+	\textit{Priorita: vysoká}
+	
+	\item[F8 Nastavení] \hspace*{\fill} \\
+	Klient umožňuje zobrazit profil nastavení a provést zde dílčí změny: \\
+	- automatické nebo ruční spuštění aplikace po zapnutí systému; \\
+	- nastavení časového intervalu připomínky; \\
+	- offline, resp. online režim aplikace (online režim -- synchronizace se serverem, offline -- vypnutí synchronizace);
+	% - sledovat jenom zvolené desktopy.
+	\par
+	\textit{Priorita: střední}
+	
+\end{description}
+\par
+\subsection{Nefunkční požadavky}
+\begin{description}
+	\item[N1 Klient v prostředí KDE] \hspace*{\fill} \\
+	Klient bude implementován pro desktopové prostředí KDE Plasma 5.  \par
+	\textit{Priorita: vysoká}
+	
+	\item[N2 Synchronizace] \hspace*{\fill} \\
+	Klient bude schopen načíst data na server, pokud se s ním podaří spojit.  \par
+	\textit{Priorita: střední}
+	
+	\item[N3 Jazyk aplikace] \hspace*{\fill} \\
+	Uživatelské rozhraní klientů bude v anglickém jazyce. \par
+	\textit{Priorita: střední}
+		
+\end{description}
+
+\section{Případy užití}
+
+V této části jsou uvedeny případy užití aplikace ve formě scénáře, diagramu, identifikace účastníků. Všechny požadavky jsou pokryty, což se potvrzuje tabulkou pokrytí požadavků na konci této části. 
+
+\subsection{Seznam účastníků}
+
+Uživatel naší aplikace se může nacházet ve dvou stavech: buď to přihlášený uživatel nebo nepřihlášený (viz obrázek ~\ref{fig:usecasesactors}). \\
+
+\begin{itemize}
+	\item \textbf{Přihlášený uživatel} - uživatel, který je přihlášen ke službě Toggl.
+	\item \textbf{Nepřihlášený uživatel} - uživatel, který není přihlášen ke službě Toggl. 
+\end{itemize}
+
+
+
+\begin{figure}[h!]
+	\centering{\includegraphics[width=0.8\linewidth]{ucastnici.png}
+		\caption{Seznam účastníků}
+	\label{fig:usecasesactors}}
+\end{figure}
+\newpage
+\subsection{Scénáře případů užití}
+
+\begin{description}
+	
+	 \begin{figure}[h]\centering
+		\includegraphics[width=1\textwidth]{usecase4.png}
+		\caption[Model případů užití.]{Model případů užití.}\label{fig:usecases}
+	\end{figure}
+	
+	
+	\item[UC1 Přihlášení] \hspace*{\fill} \\
+	\textit{Hlavní scénář:} %prihlaseni k uctu Toggl. 
+	%Alternativni scenar: prihlaseni pomoci Google uctu.
+	\\
+	1. Případ užití se začíná, když uživatel spustí aplikaci poprvé nebo byl-li odhlášen.\\
+	2. Otevře se přihlašovací okénko.\\
+	3. Uživatel zadá e-mail a heslo pro účet Toggl. \\
+	\parindent=3cm \textit{Alternativní scénář:} \\
+	3.1. Uživatel zadá e-mail a heslo pro Google účet. \\
+	4. Uživatel je přihlášen, pokud je připojen k internetové síti a zadané údaje jsou správné. 
+	
+	
+	\item[UC2 Přepnutí aktivní virtuální plochy] \hspace*{\fill} \\
+	\textit{Hlavní scénář:}
+	\\
+	1. Případ užití se začíná, když se chce uživatel přepnout z plochy X do plochy Y.  \\
+	2. Uživatel přepne plochu.
+	\\
+	3. Systém definuje plochu X jako neaktivní a plochu Y jako aktivní. 
+	\\
+	\newpage
+	\item[UC3 Manuální spuštění měřiče] \hspace*{\fill} \\
+	\textit{Hlavní scénář:}
+	\\
+	1. V případě, kdy měřič není aktivní, systém nabídne uživateli jej spustit. \\
+	%1. Systém na základě aktuálního stavu nabídne uživatelovi spustit měřič.\
+	2. Uživatel požádá systém o spuštění měřiče tím, že zmáčkne tlačítko \uv{Start}. \\
+	3. Systém spustí měřič na aktivní ploše.\\
+	% \textit{Alternativni scenar:} \\
+	%	2.1. Uzivatel pozada system o pozastaveni merice\\
+	%	3.1. V pripade, kdyz meric je aktivni, system ho pozastavi. 
+	
+	
+	\item[UC4 Manuální zastavení měřiče] \hspace*{\fill} \\
+	\textit{Hlavní scénář:}
+	\\
+	1. V případě, kdy měřič je aktivní, systém nabídne uživateli zastavit jej. \\
+	%1. System na zaklade aktualniho stavu nabidne uzivatelovi spustit meric.\\
+	2. Uživatel požádá systém o zastavení měřiče tím, že zmáčkne tlačítko \uv{Stop}. \\
+	3. Systém zastaví měřič.			
+	
+	\item[UC5 Zobrazení profilu nastavení] \hspace*{\fill} \\
+	\textit{Hlavní scénář:}
+	\\
+	1. Případ užití se začíná, je-li uživatel přihlášen. \\
+	2. Uživatel zvolí položku \uv{Preferences}. \\
+	3. Systém zobrazí profil nastavení. \\
+	4. Systém nabídne uživateli složku systémového nastavení a složku nastavení desktopových záznamů.  
+	
+	
+	\item[UC6 Zobrazení	záznamů] \hspace*{\fill} \\
+	\textit{Hlavní scénář:}
+	\\
+	1. Případ užití se začíná, když si uživatel chce prohlédnout seznam záznamů. \\
+	2. \textit{Include} UC5 Zobrazení profilu nastavení. \\
+	3. Uživatel zvolí složku nastavení desktopových záznamu.\\ 
+	4. Systém zobrazí seznam záznamů. 
+	
+	
+	\item[UC7 Sloučení záznamů] \hspace*{\fill} \\
+	\textit{Hlavní scénář:}
+	\\
+	1. Případ užití začíná, chce-li uživatel sloučit některé záznamy. \\
+	2. \textit{Include} UC6 Zobrazení záznamů. \\
+	3. Uživatel vybere záznam, který chce přidat do jiného, a přitáhne jej (drag-and-drop). \\
+	4. Systém sečte čas obou záznamu a uloží do cílového.  
+	
+	\item[UC8 Odstranění/přidání záznamů] \hspace*{\fill} \\
+	\textit{Hlavní scénář:}
+	\\
+	1. Případ užití se začíná, jestliže uživatel chce smazat, resp. přidát některou virtuální plochu. \\			
+	2. Uživatel smaže, resp. přidá virtuální plochu.\\				
+	3. Systém odstraní poslední časový záznam, resp. přidá nový. 
+		
+	\item[UC9 Úprava záznamů] \hspace*{\fill} \\
+	\textit{Hlavní scénář:}
+	\\	
+	1. Případ užití se začíná, jestliže chce uživatel upravit záznam. \\		
+	2. \textit{Include} UC6 Zobrazení záznamů. \\		
+	3. Uživatel zvolí záznam, který chce upravit. \\		
+	4. Uživatel provede úpravu záznamu (např. přejmenování).\\				
+	5. Systém uloží změny.
+	
+	
+	\item[UC10 Nastavení] \hspace*{\fill} \\
+	\textit{Hlavní scénář:}
+	\\
+	1. Případ užití se začíná, jetlize uživatel chce provést nastavení u měřiče.\\		
+	2. \textit{Include} UC5 Zobrazení profilu nastavení. \\		
+	3. Uživatel provede jednotlivé nastavení. \\			
+	4. Systém uloží změny. 
+	
+	
+	\item[UC11 Odhlášení] \hspace*{\fill} \\
+	\textit{Hlavní scénář:}
+	\\	
+	1. Případ užití se začíná, je-li uživatel přihlášený a chce se odhlásit. \\
+	2. Uživatel zvolí tlačítko \uv{Log out}.\\
+	3. Systém odhlásí uživatele.
+		
+\end{description}
+
+\subsection{Mapování případů užití}
+
+Následující tabulka ~\ref{tab:cover} ilustruje pokrytí požadavků na aplikace případy užití.
+
+\begin{table}[h]\centering
+	\caption[Tabulka pokrytí funkčních požadavků]{Tabulka pokrytí funkčních požadavků}\label{tab:cover}
+	\begin{center}
+		\begin{tabular}{|l||c|c|c|c|c|c|c|c|}
+			\hline
+			& F1 & F2 & F3 & F4 & F5 & F6 & F7 & F8\\ \hline \hline
+			UC1  & x & & & & & & & \\ \hline
+			UC2  & & & & &  & & x &\\ \hline
+			UC3  & & & & & x & & &\\ \hline
+			UC4  & & & & & x & & & \\ \hline
+			UC5  & & & & & & & & x\\ \hline
+			UC6  & & x & & & & & &\\ \hline
+			UC7  & & & & & & x & & \\ \hline
+			UC8  & & & x & & & & & \\ \hline
+			UC9  & & & & x & & & &  \\ \hline
+			UC10  & & & & & & & & x \\ \hline
+			UC11  & x & & & & & & & \\ \hline
+			
+		\end{tabular}
+	\end{center}
+\end{table}
+\newpage
+
+\chapter{Návrh}
+
+\section{Uživatelské rozhraní}
+Tato část práce pojednává o uživatelském rozhraní budoucího klientu, které jsem představila ve formě wireframů. Hlavním cílem wireframů je ukázat funkčnost klientu. \\
+Klient bude vypadat jako standartní KDE Plasma 5 aplikace a bude reprezentován jako ikona v dolním pravém rohu na hlavním panelu. Po otevření klientu se objeví grafické uživatelské rozhraní, které je potřebné na provedení jednoduchých úprav nastavení klientu. 
+\subsection{Přihlášení}
+Při prvním spuštění klientu se zobrazí přihlašovací okénko. Uživatel zadá svůj email pro Toogl účet (případně Google účet), heslo a potvrdí je. Klient odešle data na server, a pokud jsou správné, uživatel je úspěšně přihlášen (viz obrázek ~\ref{fig:wf_login}). 
+
+ \begin{figure}[h]\centering
+	\includegraphics[width=0.6\textwidth]{wf_login.png}
+	\caption[WF1 Přihlášení]{WF1 Přihlášení}\label{fig:wf_login}
+\end{figure}
+
+
+
+\subsection{Hlavní menu, spuštění a zastavení měřiče, odhlášení}
+
+Hlavní menu klientu závisí na tom, jestli je uživatel přihlášen nebo ne.\\
+Pokud uživatel není přihlášen, menu se skládá ze třech položek: \uv{Open Toggl} -- otevření aplikace, pokud je spuštěna, ale její hlavní okno není otevřeno;  \uv{Go~to website} -- link na webovou stránku Toggl service; \uv{Exit} -- zavření celé aplikace.\\
+Po přihlášení se hlavní menu rozšíří o položky \uv{Start...}, resp. \uv{Stop...} -- umožňují spustit, resp. zastavit měřič bez nutnosti otevírání hlavního okna, \uv{Log out} -- odhlášení (viz obrázek ~\ref{fig:wf_hm}).
+
+\begin{figure}[!tbp]
+\begin{subfigure}[h]{0.4\linewidth}
+	\includegraphics[width=\linewidth]{wf_hm1.png}
+	\caption{Přihlášený uživatel, měřič je zastaven}
+\end{subfigure}
+\hfill
+\begin{subfigure}[h]{0.4\linewidth}
+	\includegraphics[width=\linewidth]{wf_hm2.png}
+	\caption{Přihlášený uživatel, měřič je spuštěn}
+\end{subfigure} \par\medskip \centering
+\begin{subfigure}[h]{0.4\linewidth}\centering
+	\includegraphics[width=\linewidth]{wf_hm3.png}
+	\caption{Nepřihlášený uživatel}
+\end{subfigure}
+	\caption{WF2 Hlavní menu.}
+	\label{fig:wf_hm}
+\end{figure}
+
+\subsection{Zobrazení profilu nastavení}
+Po kliknutí na položku \uv{Open Toggl} v hlavním menu systém otevře hlavní okénko s nastaveními a časovými záznamy. Intuitivně (podle obrázku) je možné poznat, která složka odpovídá nastavení. Uživatel zvolí správnou složku a systém zobrazí profil, kde uživatel může provést jednotlivé úpravy (viz obrázek ~\ref{fig:wf_set}). 
+
+ \begin{figure}[h]\centering
+	\includegraphics[width=0.6\textwidth]{wf_set.png}
+	\caption[WF3 Nastavení.]{WF3 Nastavení}\label{fig:wf_set}
+\end{figure}
+
+
+
+\subsection{Zobrazení záznamů a jejich úprava}
+
+Když uživatel zvolí složku \uv{Open Toggl} v hlavním menu, otevře se okénko s seznamem časových záznamů pro každou plochu. Tady má každá plocha své vlastnosti: název a celkový čas strávený na této ploše během aktuálního dne.
+Uživatel má možnost upravit některé z těchto vlastností, například může přejmenovat název plochy. Také se dá sloučit některé záznamy pomocí metody drag-and-drop (viz obrázek ~\ref{fig:wf_set}). 
+
+\begin{figure}
+	\begin{subfigure}[h]{0.51\linewidth}
+		\includegraphics[width=\linewidth]{wf_list.png}
+		\caption{Zobrazení časových záznamů před úpravou}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[h]{0.5\linewidth}
+		\includegraphics[width=\linewidth]{wf_list2.png}
+		\caption{Zobrazení časových záznamů po úpravě}
+	\end{subfigure}\par\medskip \centering
+	\begin{subfigure}[h]{0.5\linewidth}
+	\includegraphics[width=\linewidth]{wf_list3.png}
+	\caption{Zobrazení časových záznamů po úpravě}
+	\end{subfigure}
+
+	\caption{WF4 Zobrazení časových záznamů a jejich úprava}\label{fig:wf_list}
+\end{figure}
+
+
+\subsection{Detekce změny desktopu}
+Klient umožňuje zobrazovat informaci, která plocha je aktivní (tzn. kterou plochu aktuálně uživatel používá), což ukáže tak, že se obarví záznam týkající se aktivní plochy jinou barvu než ostatní. V případě, kdy je měřič spuštěn, systém přestane počítat čas na neaktivní ploše a začne počítat čas na právě aktivní (viz obrázek ~\ref{fig:wf_det}). 
+
+\begin{figure}[h]
+		\begin{subfigure}[h]{0.5\linewidth}
+		\includegraphics[width=\linewidth]{wf_list3.png}
+		\caption{Uživatel je na ploše \uv{News\_Films}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[h]{0.53\linewidth}
+		\includegraphics[width=\linewidth]{wf_det.png}
+		\caption{Uživatel je na ploše \uv{Desktop\_2}}
+	\end{subfigure}
+%	\minipage{0.45\textwidth}
+%	\includegraphics[width=\linewidth]{wf_list3.png}
+%	\caption{a. Uživatel je na ploše \uv{News\_Films}.}
+%	\endminipage\hfill
+%	\minipage{0.45\textwidth}
+%	\includegraphics[width=\linewidth]{wf_det.png}
+%	\caption{b. Uživatel je na ploše \uv{Desktop\_2}.}
+%	\endminipage\hfill
+	\caption{WF5 Detekce změny desktopu.}\label{fig:wf_det}
+\end{figure}
+
+\subsection{Shrnutí}
+
+V této části byly představeny wireframy ve formě obrázku, které ilustrují úplné pokrytí případů užití a navrhují design budoucího klientu. Tabulka ~\ref{tab:coverUCWF} potvrzuje, že všechny případy užití jsou pokryty wireframy. 
+
+\clearpage
+
+\begin{table}[t] \centering
+	
+	%	\begin{center}
+	\begin{tabular}{|l||c|c|c|c|c|c|c|}
+		\hline
+		& WF1 & WF2 & WF3 & WF4 & WF5\\ \hline \hline
+		UC1  & x & & & &  \\ \hline
+		UC2  & & & & & x \\ \hline
+		UC3  & & x & & x &  \\ \hline
+		UC4  & & x & & x &   \\ \hline
+		UC5  & & & x & &  \\ \hline
+		UC6  & &  & & x &  \\ \hline
+		UC7  & & & & x &    \\ \hline
+		UC8  & & &  & x & x \\ \hline
+		UC9  & & & & x &    \\ \hline
+		UC10  & & & x & &    \\ \hline
+		UC11  & & x & & &    \\ \hline
+		
+	\end{tabular}
+	%	\end{center}
+	\caption[Tabulka pokrytí wireframů]{Tabulka pokrytí wireframů}\label{tab:coverUCWF}
+\end{table}
+
+\section{Toggl API}
+	Toggl Service nabízí veřejné rozhraní sloužící pro přístup k ovládání účtu služby na serveru \cite{toggl_api}. Toto rozhraní pokrývá celou funkčnost služby. Toggl REST API akceptují jenom požadavky ve formátu JSON kódu, ve stejném formátu také vrací odpověď. Výsledek každé provedené akce je přenášen  pomoci standardních kódů odpovědí HTTP.\\	
+	Jelikož těchto metod je velké množství a pro účely mé aplikace nejsou potřeba všechny z nich, projdu podrobněji jenom ty, které jsou nejzajímavější. 
+	
+\subsection{Autentizace} \label{auten}
+Autentizace probíhá pomocí \textbf{HTTP Basic Auth} \cite{toggl_api_auth}, kde autentizační hlavička požadavku vypadá následovně:
+\begin{itemize}
+	\item username a heslo se zřetězí do tvaru \textit{\uv{username:heslo}} nebo\\ \textit{\uv{<users\_token>:api\_token}} při používání tokenu;
+	\item výsledný řetězec se kóduje pomocí kódování \textbf{Base64};
+	\item zakódovaný řetězec se kombinuje tímto způsobem: \textit{\uv{Basic <encoded\_string>}} (všimněte si mezery mezi \uv{Basic} a zakódovaným řetězcem);
+	\item výsledná hlavička má tvar například: \textit{\uv{Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==}};
+\end{itemize}
+V případě úspěšné autentizace požadavek poskytne informaci o uživateli. 
+	
+\subsection{Časové záznamy} 
+	Časy a data používají standart \textbf{ISO 8601}, konkrétně podmnožinu popsanou v \textbf{RFC 3339} \cite{dates}.
+	Každý časový záznam \cite{toggl_api_en} má následující atributy: 
+	\begin{itemize}
+		\item \textit{string} \textbf{description} -- jméno záznamu, požadováno;
+		\item \textit{integer} \textbf{wid} -- ID workspace, požadováno pokud nejsou definovány tip a pid;
+		\item \textit{integer} \textbf{pid} -- ID projeku, není požadováno;
+		\item \textit{integer} \textbf{tid} -- ID tasku, není požadováno;
+		\item \textit{boolean} \textbf{billable} -- jenom pro workspace, jinak není požadováno;
+		\item \textit{string} \textbf{start} -- ISO 8601 datum a čas, požadováno;
+		\item \textit{string} \textbf{stop} -- ISO 8601 datum a čas, není požadováno;
+		\item \textit{integer} \textbf{duration} -- doba trvání v sekundách. Jestliže časový záznam aktuálně běží, atribut bude mít negativní hodnotu označující čas a datum zadávání času v sekundách od epochy (1 ledna 1970), požadováno;
+		\item \textit{string} \textbf{created\_with} -- název klientů, který používá API, požadováno;
+		\item \textit{array of strings} \textbf{tags} -- poznámky, není požadováno;
+		\item \textit{boolean} \textbf{duronly} -- zde má Toggl ukazovat čas začátku a konce tohoto času, není požadováno;
+		\item \textit{datatime} \textbf{at} -- timestamp, který byl odeslán v odpovědi, čas poslední úpravy;
+	\end{itemize}
+
+JSON-tělo požadavku na založení záznamu může vypadat následovně: 
+ \begin{figure}[h]\centering
+	\includegraphics[width=0.8\textwidth]{json_body.png}
+	\caption[Příklad JSON-těla požadavku na založení záznamu]{Příklad JSON-těla požadavku na založení záznamu}\label{fig:json_body}
+\end{figure}
+
+\begin{description}
+	\item[Založení] \hspace*{\fill} \\
+	 metoda: \textbf{POST} \\
+	 url: https://www.toggl.com/api/v8/time\_entries 
+	 	 
+	\item[Spuštění] \hspace*{\fill} \\
+	 metoda: \textbf{POST} \\
+	 url: https://www.toggl.com/api/v8/time\_entries/start \\
+	 
+	\item[Zastavení] \hspace*{\fill} \\
+	metoda: \textbf{PUT} \\
+	url: https://www.toggl.com/api/v8/time\_entries/<time\_entry\_id>/stop
+	
+	\item[Získání detailů o záznamu] \hspace*{\fill} \\
+	metoda: \textbf{GET} \\
+	url: https://www.toggl.com/api/v8/time\_entries/<time\_entry\_id>
+		
+	\item[Aktuálně běžící záznamy] \hspace*{\fill} \\
+	metoda: \textbf{GET} \\
+	url: https://www.toggl.com/api/v8/time\_entries/current
+	
+	\item[Aktualizovat záznam] \hspace*{\fill} \\
+	metoda: \textbf{PUT} \\
+	url: https://www.toggl.com/api/v8/time\_entries/<time\_entry\_id>
+	
+	\item[Smazání] \hspace*{\fill} \\
+	metoda: \textbf{DELETE} \\
+	url: https://www.toggl.com/api/v8/time\_entries/<time\_entry\_id>
+	
+	\item[Získání časových záznamů v určitém časovém intervalu] \hspace*{\fill} \\
+	metoda: \textbf{GET} \\
+	url: https://www.toggl.com/api/v8/time\_entries
+	
+	\item[Hromadná aktualizace úkolů] \hspace*{\fill} \\
+	metoda: \textbf{PUT} \\
+	url: https://www.toggl.com/api/v8/time\_entries/<id1,id2,id3,...>
+	
+	
+		
+\end{description}
+
+\subsection{Další požadavky}
+	Kromě požadavků na provádění akcí s časovými záznamy API umožňují:
+	\begin{description}
+		\item[Klienty] \hspace*{\fill} 
+		\begin{itemize} 
+			\item vytvoření,
+			\item získání detailů,
+			\item aktualizace,
+			\item odstranění,
+			\item nastavení viditelnosti klientů pro uživatele, 
+			\item získání klientských projektů.
+		\end{itemize}	
+		
+		\item[Skupiny] \hspace*{\fill} 
+		\begin{itemize} 
+			\item vytvoření,
+			\item aktualizace,
+			\item odstranění.
+		\end{itemize}	
+	
+		\item[Projekty] \hspace*{\fill} 
+		\begin{itemize} 
+			\item vytvoření,
+			\item získání detailů,
+			\item aktualizace,
+			\item odstranění,
+			\item získání uživatele projektu,
+			\item získání úkolů projektu,
+			\item odstranění více projektů.
+		\end{itemize}
+	
+		\item[Uživatelé projektu] \hspace*{\fill} 
+		\begin{itemize} 
+			\item vytvoření uživatele projektu,
+			\item aktualizace uživatele projektu,
+			\item odstranění uživatele projektu,
+			\item přidání více uživatelů do projektu,
+			\item aktualizace více uživatelů projektu,
+			\item odstranění více uživatelů z projektu.
+		\end{itemize}
+		
+		\item[Poznámky] \hspace*{\fill} 
+		\begin{itemize} 
+			\item vytvoření,
+			\item aktualizace,
+			\item odstranění.
+		\end{itemize}
+		
+		\item[Úkoly] \hspace*{\fill}
+		\begin{itemize} 
+			\item vytvoření,
+			\item získání detailů,
+			\item aktualizace,
+			\item odstranění,
+			\item aktualizace více úkolů,
+			\item odstranění více úkolů.
+		\end{itemize} 
+		
+		\item[Uživatelé] \hspace*{\fill} 
+		\begin{itemize} 
+			\item získání detailů a časových záznamů uživatele,
+			\item aktualizace aktuálních uživatelských dat,
+			\item resetování API tokenu,
+			\item registrace nového uživatele.
+		\end{itemize} 
+		
+		\item[Pracovní prostory (worskspaces)] \hspace*{\fill} 
+		\begin{itemize} 
+			\item získání uživatelských pracovních prostorů,
+			\item získání uživatelů pracovního prostoru,
+			\item získání klientů pracovního prostoru,
+			\item získání skupin pracovního prostoru,
+			\item získání projektů pracovního prostoru,
+			\item získání úkolů pracovního prostoru,
+			\item získání poznámek pracovního prostoru.
+		\end{itemize} 
+		
+		\item[Uživatelé pracovních prostorů] \hspace*{\fill} 
+		\begin{itemize} 
+			\item pozvat uživatele,
+			\item aktualizovat uživatele,
+			\item odstranit uživatele,
+			\item získat uživatele pro pracovní prostor.
+		\end{itemize} 
+		
+		\item[Panel nástrojů (dashboard)] \hspace*{\fill} 
+		\begin{itemize} 
+			\item získání obecného přehledu o daném týmu.
+		\end{itemize} 
+	\end{description}
+
+\section{Diagram tříd}	
+
+Na obrázku  ~\ref{fig:class_model} je  představen  diagram tříd cílové aplikace. \\
+Každá třída dědí z příslušné abstraktní třídy její rozhraní. Takový postup implementace byl zvolen z testovacích důvodů (rozhraní umožňují vytvářet \textit{mock třídy}).  \par
+Třída \textit{CSinglenon} zajišťuje existenci pouze jedné instance celé aplikace. Realizaci této funkčnosti nabízí Qt třída \textit{QApplication}, ze které dědí \textit{CSingleton}.\par
+\textit{CWindowApplication} dědí z Qt třídy \textit{QMainWindow} a je hlavním oknem aplikace. Třída vykonává funkce controlleru, který rozhoduje, zda se má ukázat  přihlašovací okénko nebo vnitřní rozhraní aplikace. Navíc je v její zodpovědnosti takzvané Tray Menu.\par
+Intuitivně je možné pochopit, že třída \textit{CLogin} zodpovídá za přihlašování. Jedná se o GUI model, a proto se dědí z \textit{QWidget} třídy. \par
+Na provádění autentizace \textit{CLogin} potřebuje instanci třídy \textit{CHTTPReceiver}, která se zabývá komunikací se severem pomoci Toggl REST API.\par
+Třída \textit{CToggl} je GUI model realizující kostru vnitřního rozhraní aplikace. Je logickým controllerem vnitřního menu a spravuje vzhled aplikace v závislosti na událostech (jestli uživatel chce otevřít menu nastavení nebo chce si prohlédnout seznam časových záznamu, případně zastavit nebo spustit měřič).\par
+Třída \textit{CSettingMenu} je GUI modelem a nabízí uživateli možnost konfigurovat aplikaci dle vlastních potřeb.\par
+Třída \textit{CTableModel} se dědí z \textit{QAbstractTableModel} a má přepsané metody ze základní třídy. Třída simuluje chování tabulky a pracuje s jejími daty: vložit řádku, smazat řádek, editovat obsah atd.\par
+ \begin{figure}\centering
+	\includegraphics[width=1\textwidth]{class_model.png}
+	\caption[Diagram tříd]{Diagram tříd}\label{fig:class_model}
+\end{figure}
+Třída \textit{CFileManager} je zodpovědná za kteroukoliv akci spojenou s prací na konfiguračních soubech. Instance této třídy jsou potřebné u \textit{CSettingsMenu} (uložení do konfiguračního souboru nastavení), \textit{CHTTPReceiver} (uložení do konfiguračního souboru tokenu a jména uživatele podle Toggl účtu), \textit{CTableModel} (uložení nového jména časového záznamu po uživatelských úpravách) a \textit{CTimeEntryList} (aktualizace v konfiguračním souboru záznamů po zastavení měřiče).\\
+\textit{CTimeEntryList} detektuje změny statusu virtuálních ploch (například přepnutí z jedné plochy do jiné). Navíc je grafickým modulem, který zobrazuje časové záznamy (obsahuje instanci \textit{CTableModel} a obsah její tabulky reaguje na změny statusu ploch).\\
+\textit{CTimeEntryItem} popisuje časové záznamy, obsahuje metody pro generaci JSON-těla požadavků. 
+
+
+	
+%\clearpage
+
+\chapter{Realizace}
+
+\section{Nástroje, technologie a knihovny}
+
+
+
+\subsection{Desktopové prostředí}
+
+KDE je desktopové prostředí pro unixové operační systémy, které používají grafické systémy X Window System a Wayland. Pro účely mé bakalářské práce bylo použito KDE poslední generace, tj. KDE Plasma 5 (verze KDE v momentě realizace 5.12.0), která je postavena na Qt5.
+
+\subsection{Vývojové prostředí}
+Celá aplikace byla vyvinuta v \textbf{Qt Creator} -- oficiální multiplatformní IDE určené k vývoji C++ aplikací postavených na Qt toolkit(verze IDE v momentě realizace 4.9.0). 
+
+\subsection{Repozitář a verzovací nástroje}
+	Verzovacím nástrojem byl zvolen \textbf{Git} s repozitářem na školním GitLabu. 
+	
+\subsection{Dokumentace}
+Pomocí nástroje \textbf{Doxygen} byly vygenerovaná HTML stránky s exportovanými komentáři a grafy závislosti.  
+
+\subsection{X11}
+
+X Window systém je okenní systém, který se skládá z několika základních komponent: X Server, X protokol, knihovna Xlib \cite{xlib_d}. Server zprostředkovává vstup uživatele a přijímá výstupní požadavky z různých klientských programů umístěných buď na stejném počítači, nebo jinde v síti. Xlib je knihovna napsaná v jazyce C, kterou aplikační programy (klienti) používají k propojení se systémem oken pomocí připojení k datovému proudu. 
+\begin{description}
+	\item[Knihovna Xlib]\hspace*{\fill} \\
+	Hlavním důvodem použití této knihovny byl problém detekce statusu virtuálních ploch. Xlib poskytuje metodu XGetWindowProperty, která byla použita jako řešení tohoto problému. Na obrázku ~\ref{fig:get_property} je uveden kód vlastní funkce, která používá XGetWindowProperty \cite{xlib}. Na základě argumentu funkce prop\_name poté můžeme určit potřebné vlastnosti. 
+	
+
+ \begin{figure}[h]\centering
+	\includegraphics[width=1\textwidth]{get_property_code.png}
+	\caption[Příklad použití funkce XGetWindowProperty]{Příklad použití funkce XGetWindowProperty}\label{fig:get_property}
+\end{figure}
+
+ \begin{figure}[h]\centering
+	\includegraphics[width=1\textwidth]{get_cur_disp.png}
+	\caption[Příklad použití funkce get\_property na zjištění čísla aktuálního desktopu]{Příklad použití funkce get\_property na zjištění čísla aktuálního desktopu}\label{fig:get_cur_disp}
+\end{figure}
+
+	Například pro zjištění pořadového čísla aktuálně používaného desktopu stačí zavolat \textbf{get\_property} s argumentem\\ \mbox{\textbf{prop\_name} = \uv{\_NET\_CURRENT\_DESKTOP}}, ukázka na obrázku ~\ref{fig:get_cur_disp}. 
+\end{description}
+
+\subsection{Qt}
+
+
+\begin{description}
+	\item[Signály a sloty]\hspace*{\fill} \\
+	
+Signály a sloty \cite{ss} tvoří mechanismus (jazykovou konstrukci) některých programovacích jazyků, který se používá pro komunikaci mezi objekty a umožňuje realizovat \textit{Observer pattern}. Koncepce je následná: jeden komponent může posílat signály, které popisují určitou událost(například stisknutí tlačítka). Jiné komponenty mohou přijímat tyto signály pomocí speciálních funkcí - slotů. Signální a slotový systém je vhodný pro popis grafického uživatelského rozhraní. Všechny třídy, které zdědí QObject nebo jednu z jeho podtříd (např. QWidget), mohou obsahovat signály a sloty (viz obrázek ~\ref{fig:qt_doc_ss}).\\
+ \begin{figure}[H]\centering
+	\includegraphics[width=0.9\textwidth]{qt_doc_ss.png}
+	\caption[Signály a sloty]{Signály a sloty}\label{fig:qt_doc_ss}
+\end{figure}
+\newpage
+Ve svém programu signály a sloty používám nejen v práci s GUI, ale i při realizaci spojení časovače a funkce \textit{getCurrentDesktop} z předchozí sekce. \\
+Třída \textit{CTimeEntryList} mimo jiné obsahuje  slot \textit{detectDesktopProperty}. 
+ \begin{figure}[H]\centering
+	\includegraphics[width=0.8\textwidth]{sig_slot.png}
+	\caption[Signál a sloty třídy CTimeEntryList]{Signál a sloty třídy CTimeEntryList}\label{fig:sig_slot}
+\end{figure}
+Řešením problémů detekce změny statusu ploch je spojení časovače a funkce \textit{detectDesktopsProperty}.
+ \begin{figure}[H]\centering
+	\includegraphics[width=0.8\textwidth]{connect.png}
+	\caption[Spojení časovače a slot-funkce detectDesktopsProperty]{Spojení časovače a slot-funkce detectDesktopsProperty}\label{fig:connect}
+\end{figure}
+Jelikož \textit{QTimer} je Qt třída (na obrázku ~\ref{fig:connect} timer je instancí třídy \textit{QTimer}), která dědí z \textit{QObject} a má signál timeout, signál bude poslán, jakmile časovač dojde k 0, čímž se vyvolá funkce \textit{detectDesktopsProperty}. Takový systém umožňuje
+kontrolovat status v určitém nastaveném časovém intervalu. 
+
+
+\end{description}
+
+\section{Napojení na Toggl API}
+
+Jelikož Toggl API jsou ve formátu HTTP požadavků a odpovědí, pro realizaci komunikace mezi klientem a Toggl serverem byla použita Qt knihovna \mbox{\textit{QtNetwork}}, která právě tuto možnost nabízí. Pro implementaci této funkčnosti stačí využít tři třídy z knihovny QtNetwork: \textit{QRequest}, \textit{QReply} a \\ \mbox{\textit{QNetworkAccessManager}} \cite{qt_netw}, které umožňují posílat požadavky a přijímat odpovědi. V mé aplikaci odpovědnost za REST API nese třída \\ \mbox{\textit{CHTTPReceiver}}. \\
+Jelikož každý uživatel má svůj vlastní token, bylo rozhodnuto použít email a heslo pro požadavek na autentizaci, který vrátí uživatelský token. Další požadavky, jako jsou například založení nového časového záznamu, se budou odesílat s tokenem v autentizační hlavičce. 
+
+
+\begin{description}
+	\item[Autentizace]\hspace*{\fill} \\
+	Pokud se jedná o první přihlášení uživatele, musí být zadány osobní údaje (email a heslo pro Toggl účet) pro autentizaci. Na obrázku ~\ref{fig:auth_code} je ukázka implementace pomocí QNetwork knihovny. 
+
+ \begin{figure}[h]\centering
+ 	\includegraphics[width=1\textwidth]{auth_code.png}
+ 	\caption[Příklad použití finkci authentication]{Příklad použití funkce authentication}\label{fig:auth_code}
+ \end{figure}
+	 Autentizační hlavička je nastavena dle pravidel popsaných v sekci \ref{auten}. Požadavek na autentizaci je volán metodou \textbf{GET}. Díky tomu, že signál finished() a slot replyClientDetailsFinished() jsou spojené, jakmile bude odpověď přijata, zavolá se funkce replyClientDetailsFinished(), jež kontroluje, zdali byl požadavek úspěšný.
+\item[Spuštění/zastavení časového záznamu ]\hspace*{\fill} \\
+	Podobným způsobem jako autentizace probíhá spuštění a zastavení časového záznamu, pouze s tím rozdílem, že autentizační hlavička bude obsahovat token namísto emailu a hesla. Spuštění záznamu je realizováno pomocí metody \textbf{POST}, zastavení pomocí \textbf{PUT}. Na obrázku ~\ref{fig:start_stop_code} je příklad metody, která se tímto zabývá. Po spuštění záznamu a přijetí úspěšné odpovědi na požadavek je zjištěno identifikační číslo tohoto záznamu, které bude následně použito pro zastavení. 
+	 \begin{figure}[h]\centering
+		\includegraphics[width=1\textwidth]{start_stop_code.png}
+		\caption[Příklad volání požadavku s tokenem v autentizační hlavičce]{Příklad volání požadavku s tokenem v autentizační hlavičce}\label{fig:start_stop_code}
+	\end{figure}
+\end{description}
+
+\section{Výsledná aplikace}
+
+Při tvorbě svého programu jsem používala různé návody a inspirovala jsem se již existujícími aplikacemi. Pro implementaci aplikace v jazyce Qt jsem použila stránky oficiální dokumentace, kde je vše přehledně a srozumitelně popsáno, včetně příkladů aplikací, které Qt Creator nabízí. Vhodný popis interfacu knihovny Xlib jsem pak našla na neoficiálních stránkách. 
+
+
+\begin{figure}[h]\centering
+	\includegraphics[width=0.7\textwidth]{toggl_login.png}
+	\caption[Okénko s přihlášením]{Okénko s přihlášením}\label{fig:t_login}
+\end{figure}
+
+
+\begin{figure}[h]\centering
+	\includegraphics[width=0.7\textwidth]{toggl_list.png}
+	\caption[Zobrazení časových záznamů]{Zobrazení časových záznamů}\label{fig:t_list}
+\end{figure}
+
+\begin{figure}[h]\centering
+	\includegraphics[width=0.7\textwidth]{toggl_set.png}
+	\caption[Nastavení]{Nastavení}\label{fig:t_set}
+\end{figure}
+
+\begin{figure}[!htb]
+	\minipage{0.4\textwidth}
+	\includegraphics[width=\linewidth]{toggl_tray_menu.png}
+	\caption{Tray Menu s pozastaveným měřičem}\label{fig:t_t_m}
+	\endminipage\hfill
+	\minipage{0.4\textwidth}
+	\includegraphics[width=\linewidth]{toggl_try_menu_stop.png}
+	\caption{Tray Menu se spuštěným měřičem}\label{fig:t_t_m_s}
+	\endminipage\hfill
+\end{figure}
+
+\begin{figure}[h]\centering
+	\includegraphics[width=0.8\textwidth]{toggl_merging.png}
+	\caption[Sloučení časových záznamů]{Sloučení časových záznamů}\label{fig:t_merg}
+\end{figure}
+
+\chapter{Testování}
+
+\section{Metody testování}
+
+Výsledná aplikace byla testována několika druhy testu. Během implementace byly kód a GUI testovány unit-testy \cite{gui_t} metodou \textit{white box} pomocí Qt Test Framework \cite{qt_test_d}. Závislost určité třídy na jiné se řešila pomocí \textit{mock tříd}. 
+
+\section{Testování použitelnosti}
+Dalším druhem testování bylo testování použitelnosti. Jedná se o kontrolu softwarového produktu z hlediska snadnosti používání aplikace. Pomocí testů použitelnosti můžeme určit ergonomii (vhodnost pro použití) programu. \\
+Kontrola použitelnosti aplikace tkví v těchto bodech:
+\begin{itemize} 
+	\item posouzení shody návrhu aplikace s její funkčností dle specifikace zákazníka;
+	\item analýza použitých grafických prvků, barevný design z hlediska vnímání;
+	\item vyhodnocení snadnosti navigace a referenční struktury;
+	\item vyhodnocení použitelnosti aplikačních funkcí;
+	\item analýza návrhu písma textu;
+	\item odstranění více úkolů.
+\end{itemize} 
+
+Abych zjistila, jaké části je třeba vylepšit či změnit, nebo které jsou již dobře zpracovány, vytvořila jsem scénář, jakým budou postupovat uživatelé z testovací skupiny, a dotazník. Testovací skupina byla sestavena z uživatelů různých oblastí lidské činnosti i věkových skupin.  
+
+\subsection{Testovaný scénář}
+
+Aby funkčnost aplikace byla co nejlépe analyzována, byl vytvořen scénář, který pokryl všechny funkční požadavky: 
+\begin{enumerate}
+	\item přihlásit se pomocí testového účtu Toggl [F1];
+	\item prohlédnout si časové záznamy existujících ploch [F2];
+	\item odstranit plochu a podívat se na změny v aplikaci [F3];
+	\item přejmenovat libovolné záznam [F4];
+	\item spustit měřič [F5];
+	\item sloučit dva libovolně záznamy [F6];
+	\item při spuštěném měřiči přepnout si na jinou plochu a podívat se na změny v aplikaci [F7];
+	\item změnit konfigurace v nastaveních [F8].
+\end{enumerate}
+ 
+\subsection{Dotazník}
+Po vyzkoušení zadaného scénáře byl nabídnut dotazník, v němž jednotliví uživatelé mohli odpovědět na otázky týkající se funkčnosti aplikace a ohodnotit~je. \\
+Dotazník se skládá z následujících otevřených otázek: 
+\begin{enumerate}
+	\item Ohodnoťte aplikaci od 1 do 10.
+	\item Co se Vám líbilo v aplikaci?
+	\item Jak jednoduché a pochopitelné bylo používání?
+	\item Co by se dalo zlepšit?
+	\item Jaká funkce Vám chyběla? 
+\end{enumerate}
+\newpage
+\section{Zhodnocení testování použitelnosti}
+Vyzkoušení scénáře každým uživatelem bylo nahráváno na diktafon.
+
+\subsection{Zhodnocení průchodu scénářem}
+
+\begin{description}
+		\item[Uživatel 1] \hspace*{\fill} 
+		\begin{enumerate}
+			\item neměl žádné problémy se splněním úkolu,
+			\item neměl žádné problémy se splněním úkolu,
+			\item neměl žádné problémy se splněním úkolu,
+			\item neměl žádné problémy se splněním úkolu,
+			\item neměl žádné problémy se splněním úkolu,
+			\item nebylo hned jasné jak se má provádět sloučení časových záznamu (není zřejmě vidět, že se má provést metoda drag-and-drop),
+			\item neměl žádné problémy se splněním úkolu,
+			\item neměl žádné problémy se splněním úkolu.
+		\end{enumerate}
+		
+		\item[Uživatel 2]  \hspace*{\fill} 
+				\begin{enumerate}
+			\item neměl žádné problémy se splněním úkolu,
+			\item neměl žádné problémy se splněním úkolu,
+			\item neměl žádné problémy se splněním úkolu,
+			\item nejdřív se pokusil pravé tlačítko myši a až potom poklepat,
+			\item neměl žádné problémy se splněním úkolu,
+			\item snažil se poklepat a až potom zkusil metodu drag-and-drop,
+			\item neměl žádné problémy se splněním úkolu,
+			\item neměl žádné problémy se splněním úkolu.
+		\end{enumerate}
+			
+		\item[Uživatel 3]  \hspace*{\fill} 
+				\begin{enumerate}
+			\item neměl žádné problémy se splněním úkolu,
+			\item neměl žádné problémy se splněním úkolu,
+			\item neměl žádné problémy se splněním úkolu,
+			\item neměl žádné problémy se splněním úkolu,
+			\item neměl žádné problémy se splněním úkolu,
+			\item neměl žádné problémy se splněním úkolu,
+			\item neměl žádné problémy se splněním úkolu,
+			\item neměl žádné problémy se splněním úkolu.
+		\end{enumerate}
+			
+\end{description}
+
+\subsection{Výsledky dotazníku}
+Testovací skupině bylo nabídnuto odpovědět na otázky dotazníku v libovolné formě (odpovědět psanou formou nebo nahrát odpovědi na diktafon). Všichni testující zvolili druhý způsob zaznamenání odpovědí. Následně tedy uvedu jejich odpovědi citované z audionahrávky:
+
+
+	\begin{enumerate}
+	\item Ohodnoťte aplikaci od 1 do 10.
+		\begin{enumerate}
+		\item \textit{Uživatel 1} 8.
+		\item \textit{Uživatel 2} 7.
+		\item \textit{Uživatel 3} 8.
+		\end{enumerate}
+		\item  Co se Vám líbilo v aplikaci?
+		\begin{enumerate}
+		\item \textit{Uživatel 1} Sloučení záznamu, ovšem to nebylo jasné na první pohled.
+		\item \textit{Uživatel 2} Synchronizace s Toggl servicem.
+		\item \textit{Uživatel 3} Počítá čas správně, online synchronizace s Toggl servicem.
+		\end{enumerate}
+		\item  Jak jednoduché a pochopitelné bylo používání?
+		\begin{enumerate}
+		\item \textit{Uživatel 1} Ohodnotil bych jednoduchost jako 9 z 10.
+		\item \textit{Uživatel 2} Většinou ano, ale pro jiné uživatele věci jako sloučení záznamu nebo jejich úprava nemusí být tak zřejmé jako pro mě.
+		\item \textit{Uživatel 3} Aplikace je poměrně intuitivní na používání díky jednoduchosti uživatelského rozhraní. 
+		\end{enumerate}
+		\item  Co by se dalo zlepšit?
+		\begin{enumerate}
+		\item \textit{Uživatel 1} Velikost hlavního okna je příliš velká, šlo by to zmenšit.
+		\item \textit{Uživatel 2} Tlacitko \uv{Log out} hlavního okna a duplikace funkčnosti aplikace v minimalizovaném okně.
+		\item \textit{Uživatel 3} Nic.
+		\end{enumerate}
+		\item  Jaká funkce Vám chyběla? 
+		\begin{enumerate}
+		\item \textit{Uživatel 1} Nastavení připomínky pro každý desktop zvlášť, aby šlo limitovat čas strávený na každé ploše.
+		\item \textit{Uživatel 2} Denní statistika bez ohledu na to, že to nabízí webová aplikace.
+		\item \textit{Uživatel 3} Počítání i sekund u měřiče.
+		\end{enumerate}
+\end{enumerate}
+	Z odpovědí plyne, že uživatelé jsou s aplikací poměrně spokojeni, přestože postrádali některé funkce. Díky těmto odpovědím a testování použitelnosti jsem poměrně jasně schopna určit směr, kterým se ubírat při vylepšování mého programu.
+
+
+\begin{conclusion}
+Cílem této práce bylo navrhnout, implementovat a otestovat klienta služby Toggl pro desktopové prostředí KDE. \par
+Nejdřív jsem analyzovala již existující desktopové měřiče unixových systémů a zjistila jsem, že ani jeden neumožňuje automatickou detekci změny virtuální plochy a počítání času zvlášť na každé z nich. Na základě výsledků získaných analýzou byly sestaveny jednotlivé případy užití a navrhnuto uživatelské rozhraní. Po navržení celé aplikace proběhl vývoj, který je popsán v implementační části této práci.\par
+Hotová aplikace byla testována jak unit-testy, tak i testy použitelnosti. Testy použitelnosti měly konkrétní přínos ve formě definice možného směru zlepšení aplikace a nových myšlenek i inspirace pro implementaci nové funkce daného programu.\par
+Výstupem práce je funkční desktopový tracker služby Toggl splňující definované zadání.\par
+V budoucnu by bylo možné aplikaci dále vylepšit o nové grafické rozhraní a rozšířit její funkce. 
+
+\end{conclusion}
+
+\bibliographystyle{csn690}
+\bibliography{mybibliographyfile}
+\begin{thebibliography}{15}
+	\bibitem{toggl} \textit{Toggl} [online], [cit. 2018-10-11]. Dostupné z: \url{https://toggl.com}
+	
+	\bibitem{rescuetime} \textit{RescueTime} [online], [cit. 2018-10-12]. Dostupné z: \url{https://www.rescuetime.com/}
+	
+	\bibitem{toptracker} \textit{TopTracker} [online], [cit. 2018-10-12]. Dostupné z: \url{https://www.toptal.com/tracker}
+	
+	\bibitem{timecamp} \textit{TimeCamp} [online], [cit. 2018-10-12]. Dostupné z: \url{https://www.timecamp.com/}
+	
+	\bibitem{hubstaff} \textit{Hubstaff} [online], [cit. 2018-10-12]. Dostupné z: \url{https://hubstaff.com/?ab=masthead\_video2}
+	
+	\bibitem{toggl_api} Toggl. \textit{Toggl API Documentation}. V: \textit{GitHub} [online], červenec 2017, [cit. 2019-03-03]. Dostupné z: \url{https://github.com/toggl/toggl\_api\_docs}
+
+		
+	\bibitem{toggl_api_auth} Authentication. \textit{Toggl API Documentation}. V: \textit{GitHub} [online], červenec 2017, [cit. 2019-03-03]. Dostupné z: \url{https://github.com/toggl/toggl\_api\_docs/blob/master/chapters/authentication.md}
+	
+	\bibitem{dates} Klyne G.: Date and Time on the Internet.  \textit{Timestamps} [online], červenec 2002, [cit. 2019-03-11]. Dostupné z: \url{https://www.ietf.org/rfc/rfc3339.txt}
+		
+	\bibitem{toggl_api_en} Time Entries. \textit{Toggl API Documentation}. V: \textit{GitHub} [online], červenec 2017, [cit. 2019-03-03]. Dostupné z: \url{https://github.com/toggl/toggl\_api\_docs/blob/master/chapters/time\_entries.md}
+
+	\bibitem{xlib_d} Gettys J.: Xlib - C Language X Interface. \textit{X Consortium Standard} [online], 2002, [cit. 2019-02-07]. Dostupné z: \url{	ftp://www.x.org/pub/current/doc/libX11/libX11/libX11.html#Introduction\_to\_Xlib}
+	
+	\bibitem{xlib} Christophe Tronche: The X Window System: \textit{The Xlib Manual} [online], [cit. 2019-02-04]. Dostupné z: \url{https://tronche.com/gui/x/xlib}
+		
+	\bibitem{ss}  Signals \& Slots. \textit{Qt Documentation} [online], [cit. 2019-02-04]. Dostupné z: \url{https://doc.qt.io/qt-5/signalsandslots.html}	
+	
+	\bibitem{qt_arch}  Qt Documentation Archives: Using Drag and Drop with Item Views. \textit{Qt Documentation} [online], [cit. 2019-03-08]. Dostupné z: \url{https://doc.qt.io/archives/qtjambi-4.5.2\_01/com/trolltech/qt/model-view-dnd.html}
+	
+	\bibitem{qt_netw}  QNetworkAccessManager Class. \textit{Qt Documentation} [online], [cit. 2019-01-29]. Dostupné z: \url{https://doc.qt.io/qt-5/qnetworkaccessmanager.html}
+	
+	\bibitem{gui_t}  Coppola D.: Bits of Bytes. \textit{GUI unit testing with Qt Test – part 1 – introduction} [online], leden 2017, [cit. 2019-02-04]. Dostupné z: \url{http://blog.davidecoppola.com/2018/01/gui-unit-testing-with-qt-test-introduction/}		
+	
+	\bibitem{qt_test_d}  Qt Test Overview. \textit{Qt Documentation} [online], [cit. 2019-04-11]. Dostupné z: \url{https://doc.qt.io/qt-5/qtest-overview.html}
+	
+\end{thebibliography}
+
+
+\appendix
+
+\chapter{Seznam použitých zkratek}
+% \printglossaries
+\begin{description}
+	\item[GUI] Graphical user interface
+	\item[XML] Extensible markup language
+	\item[API] Application programming interface
+	\item[REST] Representational State Transfer
+	\item[HTTP] HyperText Transfer Protocol
+	\item[MIME] Multipurpose Internet Mail Extensions
+	\item[JSON] JavaScript Object Notation
+	\item[UI] User interface
+	\item[IDE] Integrated Development Environment
+	\item[HTML] HyperText Markup Language
+\end{description}
+
+\chapter{Instalační příručka}
+
+\section{Diagram nasazení a závislosti}
+
+Aplikace je určena pro desktopové prostředí KDE Plasma, přičemž v okamžiku implementace bylo použito prostředí KDE Plasma 5 ve verzi 5.15.4. Minimální požadovaná verze KDE je 5.8. Při implementaci aplikace bylo použito Qt5 verze 5.12.2. \par 
+ Kde Plasma 5 již obsahuje Qt5. Dále je nutné, aby byly nainstalovány následující balíčky: \textit{libqt5x11extras5-dev},  \textit{xorg-dev} a \textit{libglib2.0-dev}. Pro jednoduchost jsem vložila nutné balíčky do \textit{installation.sh} skiptu, který je po spuštění nainstaluje a zkompiluje zdrojový kód. Podrobná instrukce se nachází v README.md souboru. \par
+Na obrázku ~\ref{fig:comp_m} je diagram nasazení, kde je vidět propojení se serverem služby Toggl. Diagram byl vytvořen pomocí nástroje \textbf{UMLet}.
+
+ \begin{figure}[h]\centering
+	\includegraphics[width=1\textwidth]{comp_m2.pdf}
+	\caption[Diagram nasazení]{Diagram nasazení}\label{fig:comp_m}
+\end{figure}
+
+
+
+\chapter{Obsah přiloženého USB}
+
+
+\begin{figure}
+	\dirtree{%
+		.1 README.txt\DTcomment{stručný popis obsahu USB a návod na instalaci}.
+		.1 installation.sh\DTcomment{instalační soubor}.
+		.1 bin\DTcomment{adresář se spustitelnou formou implementace}.
+		.1 src.\DTcomment{zdrojové kódy implementace}.
+		.2 images.\DTcomment{obrázky ikonek}.
+		.1 doc.
+		.2 html\DTcomment{dokumentace}.
+		.2 Doxyfile\DTcomment{konfigurační soubor na vytváření dokumentace}.
+		.1 unit\_tests.
+		.2 src.\DTcomment{zdrojové kódy testů}.
+		.2 bin.\DTcomment{adresář se spustitelnou formou testů}.
+		.2 run\_tests.sh.
+		.1 usability\_tests\DTcomment{audionahrávky testování použitelnosti}.
+		.1 thesis\DTcomment{zdrojová forma práce ve formátu \LaTeX{}}.
+		.1 text\DTcomment{text práce}.
+		.2 thesis.pdf\DTcomment{text práce ve formátu PDF}.
+		.2 thesis.ps\DTcomment{text práce ve formátu PS}.
+	}
+\end{figure}
+
+\end{document}

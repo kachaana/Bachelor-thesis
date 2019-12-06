@@ -1,0 +1,165 @@
+\hypertarget{classCHTTPReceiver}{}\section{C\+H\+T\+T\+P\+Receiver Class Reference}
+\label{classCHTTPReceiver}\index{C\+H\+T\+T\+P\+Receiver@{C\+H\+T\+T\+P\+Receiver}}
+
+
+Inheritance diagram for C\+H\+T\+T\+P\+Receiver\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{classCHTTPReceiver__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for C\+H\+T\+T\+P\+Receiver\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{classCHTTPReceiver__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCHTTPReceiver_a89fbad04ac34292edb59bbbd0a4e5104}\label{classCHTTPReceiver_a89fbad04ac34292edb59bbbd0a4e5104}} 
+void \hyperlink{classCHTTPReceiver_a89fbad04ac34292edb59bbbd0a4e5104}{reply\+Finished} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCHTTPReceiver_a89fbad04ac34292edb59bbbd0a4e5104}{C\+H\+T\+T\+P\+Receiver\+::reply\+Finished} Will be called once reply object is ready to proceed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCHTTPReceiver_a61545418c181ff921634e181f804d8c7}\label{classCHTTPReceiver_a61545418c181ff921634e181f804d8c7}} 
+void \hyperlink{classCHTTPReceiver_a61545418c181ff921634e181f804d8c7}{reply\+Client\+Details\+Finished} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCHTTPReceiver_a61545418c181ff921634e181f804d8c7}{C\+H\+T\+T\+P\+Receiver\+::reply\+Client\+Details\+Finished} Function slot will be called after sending user\textquotesingle{}s credentials and \+\_\+reply attribute is loaded. Function emit authentication\+Success() signal if case of success authorization. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCHTTPReceiver_a1a9361f16c0c514ef9e3a188b11601c9}\label{classCHTTPReceiver_a1a9361f16c0c514ef9e3a188b11601c9}} 
+void {\bfseries authentication\+Success} ()
+\item 
+\mbox{\Hypertarget{classCHTTPReceiver_a8a24d253e6b99319dd1d767aa5c1a99f}\label{classCHTTPReceiver_a8a24d253e6b99319dd1d767aa5c1a99f}} 
+void {\bfseries auth\+Fail} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCHTTPReceiver_a03a815d6a3bc709ce2c924c1599f6a8d}\label{classCHTTPReceiver_a03a815d6a3bc709ce2c924c1599f6a8d}} 
+{\bfseries C\+H\+T\+T\+P\+Receiver} (const \hyperlink{classCHTTPReceiver}{C\+H\+T\+T\+P\+Receiver} \&other)
+\item 
+\mbox{\Hypertarget{classCHTTPReceiver_a5397eeb8a862ade2f083b149ebc3631e}\label{classCHTTPReceiver_a5397eeb8a862ade2f083b149ebc3631e}} 
+\hyperlink{classCHTTPReceiver}{C\+H\+T\+T\+P\+Receiver} \& {\bfseries operator=} (const \hyperlink{classCHTTPReceiver}{C\+H\+T\+T\+P\+Receiver} \&other)
+\item 
+void \hyperlink{classCHTTPReceiver_ac4b7a55951c7340bb2bf483e5b8dbf59}{send\+Request} (\hyperlink{classIA__CTimeEntryItem}{I\+A\+\_\+\+C\+Time\+Entry\+Item} $\ast$, Action)
+\begin{DoxyCompactList}\small\item\em C\+H\+T\+T\+P\+Reciever\+::send\+Request Function will send request to server for start/stop time entry. \end{DoxyCompactList}\item 
+void \hyperlink{classCHTTPReceiver_af4be4d5ce59a99993417786637f7cc64}{authentication} (const Q\+String, const Q\+String)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCHTTPReceiver_af4be4d5ce59a99993417786637f7cc64}{C\+H\+T\+T\+P\+Receiver\+::authentication} Function will authenticate user with given credentials. \end{DoxyCompactList}\item 
+int \hyperlink{classCHTTPReceiver_a0e79cd1e6bf464be0420de66685a3398}{H\+T\+T\+P\+Status\+Code} (Q\+Network\+Reply $\ast$)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCHTTPReceiver_a0e79cd1e6bf464be0420de66685a3398}{C\+H\+T\+T\+P\+Receiver\+::\+H\+T\+T\+P\+Status\+Code} Function returns standard H\+T\+TP response code. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCHTTPReceiver_a2a0e30f3c03093c8ea8c262bfb984706}\label{classCHTTPReceiver_a2a0e30f3c03093c8ea8c262bfb984706}} 
+void {\bfseries set\+Time\+Entry\+Item} (\hyperlink{classIA__CTimeEntryItem}{I\+A\+\_\+\+C\+Time\+Entry\+Item} $\ast$const new\+Item)
+\item 
+\mbox{\Hypertarget{classCHTTPReceiver_a5ff4340ebb85af925dbb3edcab8ded8c}\label{classCHTTPReceiver_a5ff4340ebb85af925dbb3edcab8ded8c}} 
+Q\+String {\bfseries get\+Token} () const
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCHTTPReceiver_a6761fc61759945cece8b8192e722b838}\label{classCHTTPReceiver_a6761fc61759945cece8b8192e722b838}} 
+Q\+Network\+Reply $\ast$ {\bfseries reply}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCHTTPReceiver_af4be4d5ce59a99993417786637f7cc64}\label{classCHTTPReceiver_af4be4d5ce59a99993417786637f7cc64}} 
+\index{C\+H\+T\+T\+P\+Receiver@{C\+H\+T\+T\+P\+Receiver}!authentication@{authentication}}
+\index{authentication@{authentication}!C\+H\+T\+T\+P\+Receiver@{C\+H\+T\+T\+P\+Receiver}}
+\subsubsection{\texorpdfstring{authentication()}{authentication()}}
+{\footnotesize\ttfamily void C\+H\+T\+T\+P\+Receiver\+::authentication (\begin{DoxyParamCaption}\item[{const Q\+String}]{email,  }\item[{const Q\+String}]{password }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCHTTPReceiver_af4be4d5ce59a99993417786637f7cc64}{C\+H\+T\+T\+P\+Receiver\+::authentication} Function will authenticate user with given credentials. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em email} & User\textquotesingle{}s email. \\
+\hline
+{\em password} & User\textquotesingle{}s password. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classIA__CHTTPReceiver}{I\+A\+\_\+\+C\+H\+T\+T\+P\+Receiver}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCHTTPReceiver_af4be4d5ce59a99993417786637f7cc64_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classCHTTPReceiver_a0e79cd1e6bf464be0420de66685a3398}\label{classCHTTPReceiver_a0e79cd1e6bf464be0420de66685a3398}} 
+\index{C\+H\+T\+T\+P\+Receiver@{C\+H\+T\+T\+P\+Receiver}!H\+T\+T\+P\+Status\+Code@{H\+T\+T\+P\+Status\+Code}}
+\index{H\+T\+T\+P\+Status\+Code@{H\+T\+T\+P\+Status\+Code}!C\+H\+T\+T\+P\+Receiver@{C\+H\+T\+T\+P\+Receiver}}
+\subsubsection{\texorpdfstring{H\+T\+T\+P\+Status\+Code()}{HTTPStatusCode()}}
+{\footnotesize\ttfamily int C\+H\+T\+T\+P\+Receiver\+::\+H\+T\+T\+P\+Status\+Code (\begin{DoxyParamCaption}\item[{Q\+Network\+Reply $\ast$}]{reply }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCHTTPReceiver_a0e79cd1e6bf464be0420de66685a3398}{C\+H\+T\+T\+P\+Receiver\+::\+H\+T\+T\+P\+Status\+Code} Function returns standard H\+T\+TP response code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reply} & Q\+Network\+Reply object that contains reply-\/body and H\+T\+TP status code. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True is request returns code 200 -\/ OK. False overwise. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classIA__CHTTPReceiver}{I\+A\+\_\+\+C\+H\+T\+T\+P\+Receiver}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCHTTPReceiver_a0e79cd1e6bf464be0420de66685a3398_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classCHTTPReceiver_ac4b7a55951c7340bb2bf483e5b8dbf59}\label{classCHTTPReceiver_ac4b7a55951c7340bb2bf483e5b8dbf59}} 
+\index{C\+H\+T\+T\+P\+Receiver@{C\+H\+T\+T\+P\+Receiver}!send\+Request@{send\+Request}}
+\index{send\+Request@{send\+Request}!C\+H\+T\+T\+P\+Receiver@{C\+H\+T\+T\+P\+Receiver}}
+\subsubsection{\texorpdfstring{send\+Request()}{sendRequest()}}
+{\footnotesize\ttfamily void C\+H\+T\+T\+P\+Receiver\+::send\+Request (\begin{DoxyParamCaption}\item[{\hyperlink{classIA__CTimeEntryItem}{I\+A\+\_\+\+C\+Time\+Entry\+Item} $\ast$}]{entry,  }\item[{Action}]{act }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+C\+H\+T\+T\+P\+Reciever\+::send\+Request Function will send request to server for start/stop time entry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entry} & \hyperlink{classCTimeEntryItem}{C\+Time\+Entry\+Item} object decribes one time entry. \\
+\hline
+{\em act} & Enum value for control function logic (e.\+x. can be S\+T\+OP or S\+T\+A\+RT). \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classIA__CHTTPReceiver}{I\+A\+\_\+\+C\+H\+T\+T\+P\+Receiver}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCHTTPReceiver_ac4b7a55951c7340bb2bf483e5b8dbf59_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/sobaka/\+Client\+Toggl/src/chttpreceiver.\+h\item 
+/home/sobaka/\+Client\+Toggl/src/chttpreceiver.\+cpp\end{DoxyCompactItemize}

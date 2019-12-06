@@ -1,0 +1,10 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classIA__CLogin.html" title="IA_CLogin" alt="" coords="5,81,88,108"/>
+<area shape="rect" id="node2" href="$classCLogin.html" title="CLogin" alt="" coords="171,5,234,32"/>
+<area shape="rect" id="node3" href="$classIA__CSettingsMenu.html" title="IA_CSettingsMenu" alt="" coords="137,56,269,83"/>
+<area shape="rect" id="node5" href="$classIA__CTimeEntryList.html" title="IA_CTimeEntryList" alt="" coords="136,107,269,133"/>
+<area shape="rect" id="node7" href="$classIA__CToggl.html" title="IA_CToggl" alt="" coords="161,157,245,184"/>
+<area shape="rect" id="node4" href="$classCSettingsMenu.html" title="CSettingsMenu" alt="" coords="318,56,430,83"/>
+<area shape="rect" id="node6" href="$classCTimeEntryList.html" title="CTimeEntryList" alt="" coords="317,107,431,133"/>
+<area shape="rect" id="node8" href="$classCToggl.html" title="CToggl" alt="" coords="342,157,406,184"/>
+</map>

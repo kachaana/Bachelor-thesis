@@ -1,0 +1,57 @@
+\babel@toc {czech}{}
+\babel@toc {czech}{}
+\contentsline {subsection}{Odkaz na tuto pr{\' a}ci}{vi}{section*.1}% 
+\contentsline {chapter}{{\' U}vod}{1}{chapter*.5}% 
+\contentsline {chapter}{\chapternumberline {1}C\IeC {\'\i }l pr\IeC {\'a}ce}{3}{chapter.1}% 
+\contentsline {chapter}{\chapternumberline {2}Anal\IeC {\'y}za}{5}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Sou\IeC {\v c}asn\IeC {\'a} \IeC {\v r}e\IeC {\v s}en\IeC {\'\i }}{5}{section.2.1}% 
+\contentsline {subsection}{\numberline {2.1.1}Slu\IeC {\v z}by Toggl}{5}{subsection.2.1.1}% 
+\contentsline {subsection}{\numberline {2.1.2}RescueTime}{6}{subsection.2.1.2}% 
+\contentsline {subsection}{\numberline {2.1.3}TopTracker}{7}{subsection.2.1.3}% 
+\contentsline {subsection}{\numberline {2.1.4}TimeCamp}{9}{subsection.2.1.4}% 
+\contentsline {subsection}{\numberline {2.1.5}Hubstaff}{9}{subsection.2.1.5}% 
+\contentsline {subsection}{\numberline {2.1.6}Souhrn}{10}{subsection.2.1.6}% 
+\contentsline {section}{\numberline {2.2}Anal\IeC {\'y}za po\IeC {\v z}adavk\IeC {\r u}}{12}{section.2.2}% 
+\contentsline {subsection}{\numberline {2.2.1}Funk\IeC {\v c}n\IeC {\'\i } po\IeC {\v z}adavky}{12}{subsection.2.2.1}% 
+\contentsline {subsection}{\numberline {2.2.2}Nefunk\IeC {\v c}n\IeC {\'\i } po\IeC {\v z}adavky}{13}{subsection.2.2.2}% 
+\contentsline {section}{\numberline {2.3}P\IeC {\v r}\IeC {\'\i }pady u\IeC {\v z}it\IeC {\'\i }}{13}{section.2.3}% 
+\contentsline {subsection}{\numberline {2.3.1}Seznam \IeC {\'u}\IeC {\v c}astn\IeC {\'\i }k\IeC {\r u}}{13}{subsection.2.3.1}% 
+\contentsline {subsection}{\numberline {2.3.2}Sc\IeC {\'e}n\IeC {\'a}\IeC {\v r}e p\IeC {\v r}\IeC {\'\i }pad\IeC {\r u} u\IeC {\v z}it\IeC {\'\i }}{14}{subsection.2.3.2}% 
+\contentsline {subsection}{\numberline {2.3.3}Mapov\IeC {\'a}n\IeC {\'\i } p\IeC {\v r}\IeC {\'\i }pad\IeC {\r u} u\IeC {\v z}it\IeC {\'\i }}{17}{subsection.2.3.3}% 
+\contentsline {chapter}{\chapternumberline {3}N\IeC {\'a}vrh}{19}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}U\IeC {\v z}ivatelsk\IeC {\'e} rozhran\IeC {\'\i }}{19}{section.3.1}% 
+\contentsline {subsection}{\numberline {3.1.1}P\IeC {\v r}ihl\IeC {\'a}\IeC {\v s}en\IeC {\'\i }}{19}{subsection.3.1.1}% 
+\contentsline {subsection}{\numberline {3.1.2}Hlavn\IeC {\'\i } menu, spu\IeC {\v s}t\IeC {\v e}n\IeC {\'\i } a zastaven\IeC {\'\i } m\IeC {\v e}\IeC {\v r}i\IeC {\v c}e, odhl\IeC {\'a}\IeC {\v s}en\IeC {\'\i }}{19}{subsection.3.1.2}% 
+\contentsline {subsection}{\numberline {3.1.3}Zobrazen\IeC {\'\i } profilu nastaven\IeC {\'\i }}{21}{subsection.3.1.3}% 
+\contentsline {subsection}{\numberline {3.1.4}Zobrazen\IeC {\'\i } z\IeC {\'a}znam\IeC {\r u} a jejich \IeC {\'u}prava}{21}{subsection.3.1.4}% 
+\contentsline {subsection}{\numberline {3.1.5}Detekce zm\IeC {\v e}ny desktopu}{21}{subsection.3.1.5}% 
+\contentsline {subsection}{\numberline {3.1.6}Shrnut\IeC {\'\i }}{23}{subsection.3.1.6}% 
+\contentsline {section}{\numberline {3.2}Toggl API}{24}{section.3.2}% 
+\contentsline {subsection}{\numberline {3.2.1}Autentizace}{24}{subsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.2.2}\IeC {\v C}asov\IeC {\'e} z\IeC {\'a}znamy}{25}{subsection.3.2.2}% 
+\contentsline {subsection}{\numberline {3.2.3}Dal\IeC {\v s}\IeC {\'\i } po\IeC {\v z}adavky}{26}{subsection.3.2.3}% 
+\contentsline {section}{\numberline {3.3}Diagram t\IeC {\v r}\IeC {\'\i }d}{28}{section.3.3}% 
+\contentsline {chapter}{\chapternumberline {4}Realizace}{31}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}N\IeC {\'a}stroje, technologie a knihovny}{31}{section.4.1}% 
+\contentsline {subsection}{\numberline {4.1.1}Desktopov\IeC {\'e} prost\IeC {\v r}ed\IeC {\'\i }}{31}{subsection.4.1.1}% 
+\contentsline {subsection}{\numberline {4.1.2}V\IeC {\'y}vojov\IeC {\'e} prost\IeC {\v r}ed\IeC {\'\i }}{31}{subsection.4.1.2}% 
+\contentsline {subsection}{\numberline {4.1.3}Repozit\IeC {\'a}\IeC {\v r} a verzovac\IeC {\'\i } n\IeC {\'a}stroje}{31}{subsection.4.1.3}% 
+\contentsline {subsection}{\numberline {4.1.4}Dokumentace}{31}{subsection.4.1.4}% 
+\contentsline {subsection}{\numberline {4.1.5}X11}{31}{subsection.4.1.5}% 
+\contentsline {subsection}{\numberline {4.1.6}Qt}{33}{subsection.4.1.6}% 
+\contentsline {section}{\numberline {4.2}Napojen\IeC {\'\i } na Toggl API}{34}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}V\IeC {\'y}sledn\IeC {\'a} aplikace}{36}{section.4.3}% 
+\contentsline {chapter}{\chapternumberline {5}Testov\IeC {\'a}n\IeC {\'\i }}{39}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Metody testov\IeC {\'a}n\IeC {\'\i }}{39}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}Testov\IeC {\'a}n\IeC {\'\i } pou\IeC {\v z}itelnosti}{39}{section.5.2}% 
+\contentsline {subsection}{\numberline {5.2.1}Testovan\IeC {\'y} sc\IeC {\'e}n\IeC {\'a}\IeC {\v r}}{40}{subsection.5.2.1}% 
+\contentsline {subsection}{\numberline {5.2.2}Dotazn\IeC {\'\i }k}{40}{subsection.5.2.2}% 
+\contentsline {section}{\numberline {5.3}Zhodnocen\IeC {\'\i } testov\IeC {\'a}n\IeC {\'\i } pou\IeC {\v z}itelnosti}{41}{section.5.3}% 
+\contentsline {subsection}{\numberline {5.3.1}Zhodnocen\IeC {\'\i } pr\IeC {\r u}chodu sc\IeC {\'e}n\IeC {\'a}\IeC {\v r}em}{41}{subsection.5.3.1}% 
+\contentsline {subsection}{\numberline {5.3.2}V\IeC {\'y}sledky dotazn\IeC {\'\i }ku}{42}{subsection.5.3.2}% 
+\contentsline {chapter}{Z{\' a}v{\v e}r}{45}{chapter*.36}% 
+\contentsline {chapter}{Literatura}{47}{chapter*.37}% 
+\contentsline {appendix}{\chapternumberline {A}Seznam pou\IeC {\v z}it\IeC {\'y}ch zkratek}{49}{appendix.A}% 
+\contentsline {appendix}{\chapternumberline {B}Instala\IeC {\v c}n\IeC {\'\i } p\IeC {\v r}\IeC {\'\i }ru\IeC {\v c}ka}{51}{appendix.B}% 
+\contentsline {section}{\numberline {B.1}Diagram nasazen\IeC {\'\i } a z\IeC {\'a}vislosti}{51}{section.B.1}% 
+\contentsline {appendix}{\chapternumberline {C}Obsah p\IeC {\v r}ilo\IeC {\v z}en\IeC {\'e}ho USB}{53}{appendix.C}% 

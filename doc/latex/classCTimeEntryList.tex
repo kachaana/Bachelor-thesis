@@ -1,0 +1,132 @@
+\hypertarget{classCTimeEntryList}{}\section{C\+Time\+Entry\+List Class Reference}
+\label{classCTimeEntryList}\index{C\+Time\+Entry\+List@{C\+Time\+Entry\+List}}
+
+
+Inheritance diagram for C\+Time\+Entry\+List\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classCTimeEntryList__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for C\+Time\+Entry\+List\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCTimeEntryList__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCTimeEntryList_a8c3e063ec914cac771958a23fc0055a5}\label{classCTimeEntryList_a8c3e063ec914cac771958a23fc0055a5}} 
+void \hyperlink{classCTimeEntryList_a8c3e063ec914cac771958a23fc0055a5}{detect\+Desktops\+Property} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCTimeEntryList_a8c3e063ec914cac771958a23fc0055a5}{C\+Time\+Entry\+List\+::detect\+Desktops\+Property} Function detects ever change about desktops status that was happend. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCTimeEntryList_a63519d98ac71bb570a67c459c666dd65}\label{classCTimeEntryList_a63519d98ac71bb570a67c459c666dd65}} 
+void {\bfseries decrement\+Total\+Desktops\+Number} ()
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCTimeEntryList_aa8867a959c32a552fba7ef224acfa078}\label{classCTimeEntryList_aa8867a959c32a552fba7ef224acfa078}} 
+void {\bfseries value\+Changed} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{classCTimeEntryList_a3c69293ae26634d1889e0bd8730926ae}{get\+\_\+property} (Display $\ast$, Window, Atom, char $\ast$, unsigned long $\ast$)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCTimeEntryList_a3c69293ae26634d1889e0bd8730926ae}{C\+Time\+Entry\+List\+::get\+\_\+property} exported from X\+Lib manual. \end{DoxyCompactList}\item 
+int \hyperlink{classCTimeEntryList_a77da074f7eafb033dd6e85f1859b283e}{get\+Number\+Of\+Desktops} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCTimeEntryList_a77da074f7eafb033dd6e85f1859b283e}{C\+Time\+Entry\+List\+::get\+Number\+Of\+Desktops} Function uses Xlib interface to get know the amount of virtual desktops. \end{DoxyCompactList}\item 
+int \hyperlink{classCTimeEntryList_a20719d5a02fbabea219f8f05be9e9791}{get\+Current\+Desktop} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCTimeEntryList_a20719d5a02fbabea219f8f05be9e9791}{C\+Time\+Entry\+List\+::get\+Current\+Desktop} Function uses Xlib interface to get know the order number of current in use virtual desktops. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCTimeEntryList_a80f2cc219a97436e47351195b429027c}\label{classCTimeEntryList_a80f2cc219a97436e47351195b429027c}} 
+void {\bfseries set\+Time\+Entry\+Item} (\hyperlink{classIA__CTimeEntryItem}{I\+A\+\_\+\+C\+Time\+Entry\+Item} $\ast$new\+Time\+Entry\+Item)
+\item 
+\mbox{\Hypertarget{classCTimeEntryList_ae39f48902c6a22a5960062b458a1fc60}\label{classCTimeEntryList_ae39f48902c6a22a5960062b458a1fc60}} 
+\hyperlink{classIA__CTimeEntryItem}{I\+A\+\_\+\+C\+Time\+Entry\+Item} $\ast$ {\bfseries get\+Time\+Entry\+Item} () const
+\item 
+\mbox{\Hypertarget{classCTimeEntryList_aeeacf317fd0a0f46352245804600a0a6}\label{classCTimeEntryList_aeeacf317fd0a0f46352245804600a0a6}} 
+void {\bfseries set\+Is\+Start} (const bool state)
+\item 
+\mbox{\Hypertarget{classCTimeEntryList_a10d04894e9dce55472b1c29f38cbd664}\label{classCTimeEntryList_a10d04894e9dce55472b1c29f38cbd664}} 
+bool {\bfseries get\+Is\+Start} () const
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCTimeEntryList_a3c69293ae26634d1889e0bd8730926ae}\label{classCTimeEntryList_a3c69293ae26634d1889e0bd8730926ae}} 
+\index{C\+Time\+Entry\+List@{C\+Time\+Entry\+List}!get\+\_\+property@{get\+\_\+property}}
+\index{get\+\_\+property@{get\+\_\+property}!C\+Time\+Entry\+List@{C\+Time\+Entry\+List}}
+\subsubsection{\texorpdfstring{get\+\_\+property()}{get\_property()}}
+{\footnotesize\ttfamily char $\ast$ C\+Time\+Entry\+List\+::get\+\_\+property (\begin{DoxyParamCaption}\item[{Display $\ast$}]{disp,  }\item[{Window}]{win,  }\item[{Atom}]{xa\+\_\+prop\+\_\+type,  }\item[{char $\ast$}]{prop\+\_\+name,  }\item[{unsigned long $\ast$}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCTimeEntryList_a3c69293ae26634d1889e0bd8730926ae}{C\+Time\+Entry\+List\+::get\+\_\+property} exported from X\+Lib manual. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em disp} & \\
+\hline
+{\em win} & \\
+\hline
+{\em xa\+\_\+prop\+\_\+type} & \\
+\hline
+{\em prop\+\_\+name} & \\
+\hline
+{\em size} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classIA__CTimeEntryList}{I\+A\+\_\+\+C\+Time\+Entry\+List}.
+
+\mbox{\Hypertarget{classCTimeEntryList_a20719d5a02fbabea219f8f05be9e9791}\label{classCTimeEntryList_a20719d5a02fbabea219f8f05be9e9791}} 
+\index{C\+Time\+Entry\+List@{C\+Time\+Entry\+List}!get\+Current\+Desktop@{get\+Current\+Desktop}}
+\index{get\+Current\+Desktop@{get\+Current\+Desktop}!C\+Time\+Entry\+List@{C\+Time\+Entry\+List}}
+\subsubsection{\texorpdfstring{get\+Current\+Desktop()}{getCurrentDesktop()}}
+{\footnotesize\ttfamily int C\+Time\+Entry\+List\+::get\+Current\+Desktop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCTimeEntryList_a20719d5a02fbabea219f8f05be9e9791}{C\+Time\+Entry\+List\+::get\+Current\+Desktop} Function uses Xlib interface to get know the order number of current in use virtual desktops. 
+
+\begin{DoxyReturn}{Returns}
+Order number of active desktop. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classIA__CTimeEntryList}{I\+A\+\_\+\+C\+Time\+Entry\+List}.
+
+\mbox{\Hypertarget{classCTimeEntryList_a77da074f7eafb033dd6e85f1859b283e}\label{classCTimeEntryList_a77da074f7eafb033dd6e85f1859b283e}} 
+\index{C\+Time\+Entry\+List@{C\+Time\+Entry\+List}!get\+Number\+Of\+Desktops@{get\+Number\+Of\+Desktops}}
+\index{get\+Number\+Of\+Desktops@{get\+Number\+Of\+Desktops}!C\+Time\+Entry\+List@{C\+Time\+Entry\+List}}
+\subsubsection{\texorpdfstring{get\+Number\+Of\+Desktops()}{getNumberOfDesktops()}}
+{\footnotesize\ttfamily int C\+Time\+Entry\+List\+::get\+Number\+Of\+Desktops (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCTimeEntryList_a77da074f7eafb033dd6e85f1859b283e}{C\+Time\+Entry\+List\+::get\+Number\+Of\+Desktops} Function uses Xlib interface to get know the amount of virtual desktops. 
+
+\begin{DoxyReturn}{Returns}
+Number of actual existing desktops. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classIA__CTimeEntryList}{I\+A\+\_\+\+C\+Time\+Entry\+List}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/sobaka/\+Client\+Toggl/src/ctimeentrylist.\+h\item 
+/home/sobaka/\+Client\+Toggl/src/ctimeentrylist.\+cpp\end{DoxyCompactItemize}

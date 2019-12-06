@@ -1,0 +1,3 @@
+<map id="IA_CSettingsMenu" name="IA_CSettingsMenu">
+<area shape="rect" id="node3" href="$classCSettingsMenu.html" title="{CSettingsMenu\n|+ array_check_box\l+ lineEditTime\l+ saveButton\l|+ CSettingsMenu()\l+ ~CSettingsMenu()\l+ CSettingsMenu()\l+ operator=()\l+ setFileManager()\l+ on_checkBoxAutorun\l_stateChanged()\l+ on_checkBoxReminder\l_stateChanged()\l+ setText()\l+ showReminder()\l+ on_checkBoxOfflineMode\l_stateChanged()\l}" alt="" coords="5,373,188,656"/>
+</map>

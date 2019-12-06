@@ -1,0 +1,7 @@
+<map id="CTimeEntryList" name="CTimeEntryList">
+<area shape="rect" id="node2" href="$classIA__CTimeEntryList.html" title="{IA_CTimeEntryList\n|+ timer\l+ vectorTime\l+ timeStart\l|+ IA_CTimeEntryList()\l+ ~IA_CTimeEntryList()\l+ get_property()\l+ getNumberOfDesktops()\l+ getCurrentDesktop()\l+ setTimeEntryItem()\l+ getTimeEntryItem()\l+ setIsStart()\l+ getIsStart()\l+ detectDesktopsProperty()\l+ decrementTotalDesktopsNumber()\l}" alt="" coords="269,448,503,701"/>
+<area shape="rect" id="node4" href="$classIA__CHTTPReceiver.html" title="{IA_CHTTPReceiver\n||+ sendRequest()\l+ setTimeEntryItem()\l+ authentication()\l+ HTTPStatusCode()\l}" alt="" coords="103,198,250,319"/>
+<area shape="rect" id="node6" href="$classIA__CTimeEntryItem.html" title="{IA_CTimeEntryItem\n||+ IA_CTimeEntryItem()\l+ IA_CTimeEntryItem()\l+ ~IA_CTimeEntryItem()\l+ timeEntryToJSON()\l+ getTimeEntryIDFromResponse()\l+ setId()\l+ getId()\l}" alt="" coords="275,176,497,341"/>
+<area shape="rect" id="node7" href="$classIA__CFileManager.html" title="{IA_CFileManager\n|# _appDirPath\l# _autostartPath\l# _appPath\l|+ ~IA_CFileManager()\l+ createConfFile()\l+ getTokenFromFile()\l+ updateDesktopNames()\l+ uploadTokenToFile()\l+ getDesktopNameByNumber()\l+ loadEntriesFromFile()\l+ createAutorunFile()\l+ checkAutorunDirExistance()\l+ removeAutostartFile()\land 11 more...\l}" alt="" coords="521,132,728,385"/>
+<area shape="rect" id="node8" href="$classIA__CTableModel.html" title="{IA_CTableModel\n||+ IA_CTableModel()\l+ getList()\l}" alt="" coords="753,213,891,305"/>
+</map>

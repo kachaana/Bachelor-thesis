@@ -1,0 +1,3 @@
+<map id="CTimeEntryList" name="CTimeEntryList">
+<area shape="rect" id="node2" href="$classIA__CTimeEntryList.html" title="{IA_CTimeEntryList\n|+ timer\l+ vectorTime\l+ timeStart\l+ server\l+ tableModel\l# _timeEntryItem\l# _fileManager\l|+ IA_CTimeEntryList()\l+ ~IA_CTimeEntryList()\l+ get_property()\l+ getNumberOfDesktops()\l+ getCurrentDesktop()\l+ setTimeEntryItem()\l+ getTimeEntryItem()\l+ setIsStart()\l+ getIsStart()\l+ detectDesktopsProperty()\l+ decrementTotalDesktopsNumber()\l}" alt="" coords="5,131,240,443"/>
+</map>

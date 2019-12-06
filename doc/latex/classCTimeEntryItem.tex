@@ -1,0 +1,86 @@
+\hypertarget{classCTimeEntryItem}{}\section{C\+Time\+Entry\+Item Class Reference}
+\label{classCTimeEntryItem}\index{C\+Time\+Entry\+Item@{C\+Time\+Entry\+Item}}
+
+
+Inheritance diagram for C\+Time\+Entry\+Item\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classCTimeEntryItem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for C\+Time\+Entry\+Item\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classCTimeEntryItem__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCTimeEntryItem_abb2fcea14a59d2d78b50a3e0a6bf5a06}\label{classCTimeEntryItem_abb2fcea14a59d2d78b50a3e0a6bf5a06}} 
+{\bfseries C\+Time\+Entry\+Item} (const Q\+String, const Q\+String)
+\item 
+Q\+String \hyperlink{classCTimeEntryItem_acc7b42acd707bb21357f2ea81cc414a2}{time\+Entry\+To\+J\+S\+ON} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCTimeEntryItem_acc7b42acd707bb21357f2ea81cc414a2}{C\+Time\+Entry\+Item\+::time\+Entry\+To\+J\+S\+ON} generate J\+S\+O\+N-\/body based on item\textquotesingle{}s attributes. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classCTimeEntryItem_a1c2c26c28875293288a254bfea367f71}{get\+Time\+Entry\+I\+D\+From\+Response} (Q\+Byte\+Array)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCTimeEntryItem_a1c2c26c28875293288a254bfea367f71}{C\+Time\+Entry\+Item\+::get\+Time\+Entry\+I\+D\+From\+Response} will parse bytearray from http response and find there item\textquotesingle{}s id. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCTimeEntryItem_a58ef4b5b516387b1492b5786fafaa6d2}\label{classCTimeEntryItem_a58ef4b5b516387b1492b5786fafaa6d2}} 
+void {\bfseries set\+Id} (const Q\+String id\+New)
+\item 
+\mbox{\Hypertarget{classCTimeEntryItem_ac0052afa3c731154ddce67befde71e2d}\label{classCTimeEntryItem_ac0052afa3c731154ddce67befde71e2d}} 
+Q\+String {\bfseries get\+Id} () const
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCTimeEntryItem_a1c2c26c28875293288a254bfea367f71}\label{classCTimeEntryItem_a1c2c26c28875293288a254bfea367f71}} 
+\index{C\+Time\+Entry\+Item@{C\+Time\+Entry\+Item}!get\+Time\+Entry\+I\+D\+From\+Response@{get\+Time\+Entry\+I\+D\+From\+Response}}
+\index{get\+Time\+Entry\+I\+D\+From\+Response@{get\+Time\+Entry\+I\+D\+From\+Response}!C\+Time\+Entry\+Item@{C\+Time\+Entry\+Item}}
+\subsubsection{\texorpdfstring{get\+Time\+Entry\+I\+D\+From\+Response()}{getTimeEntryIDFromResponse()}}
+{\footnotesize\ttfamily Q\+String C\+Time\+Entry\+Item\+::get\+Time\+Entry\+I\+D\+From\+Response (\begin{DoxyParamCaption}\item[{Q\+Byte\+Array}]{byte\+Array }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCTimeEntryItem_a1c2c26c28875293288a254bfea367f71}{C\+Time\+Entry\+Item\+::get\+Time\+Entry\+I\+D\+From\+Response} will parse bytearray from http response and find there item\textquotesingle{}s id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte\+Array} & J\+S\+O\+N-\/body of http response. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+item\textquotesingle{}s id in Q\+String format. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classIA__CTimeEntryItem}{I\+A\+\_\+\+C\+Time\+Entry\+Item}.
+
+\mbox{\Hypertarget{classCTimeEntryItem_acc7b42acd707bb21357f2ea81cc414a2}\label{classCTimeEntryItem_acc7b42acd707bb21357f2ea81cc414a2}} 
+\index{C\+Time\+Entry\+Item@{C\+Time\+Entry\+Item}!time\+Entry\+To\+J\+S\+ON@{time\+Entry\+To\+J\+S\+ON}}
+\index{time\+Entry\+To\+J\+S\+ON@{time\+Entry\+To\+J\+S\+ON}!C\+Time\+Entry\+Item@{C\+Time\+Entry\+Item}}
+\subsubsection{\texorpdfstring{time\+Entry\+To\+J\+S\+O\+N()}{timeEntryToJSON()}}
+{\footnotesize\ttfamily Q\+String C\+Time\+Entry\+Item\+::time\+Entry\+To\+J\+S\+ON (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classCTimeEntryItem_acc7b42acd707bb21357f2ea81cc414a2}{C\+Time\+Entry\+Item\+::time\+Entry\+To\+J\+S\+ON} generate J\+S\+O\+N-\/body based on item\textquotesingle{}s attributes. 
+
+\begin{DoxyReturn}{Returns}
+J\+S\+O\+N-\/body for http request. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classIA__CTimeEntryItem}{I\+A\+\_\+\+C\+Time\+Entry\+Item}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/sobaka/\+Client\+Toggl/src/ctimeentryitem.\+h\item 
+/home/sobaka/\+Client\+Toggl/src/ctimeentryitem.\+cpp\end{DoxyCompactItemize}

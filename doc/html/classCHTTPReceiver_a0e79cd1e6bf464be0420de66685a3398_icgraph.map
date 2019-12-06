@@ -1,0 +1,6 @@
+<map id="CHTTPReceiver::HTTPStatusCode" name="CHTTPReceiver::HTTPStatusCode">
+<area shape="rect" id="node2" href="$classCHTTPReceiver.html#a61545418c181ff921634e181f804d8c7" title="CHTTPReceiver::replyClientDetailsFinished Function slot will be called after sending user&#39;s credentia..." alt="" coords="291,5,481,47"/>
+<area shape="rect" id="node4" href="$classCHTTPReceiver.html#a89fbad04ac34292edb59bbbd0a4e5104" title="CHTTPReceiver::replyFinished Will be called once reply object is ready to proceed. " alt="" coords="284,71,488,98"/>
+<area shape="rect" id="node3" href="$classCHTTPReceiver.html#af4be4d5ce59a99993417786637f7cc64" title="CHTTPReceiver::authentication Function will authenticate user with given credentials. " alt="" coords="536,13,744,39"/>
+<area shape="rect" id="node5" href="$classCHTTPReceiver.html#ac4b7a55951c7340bb2bf483e5b8dbf59" title="CHTTPReciever::sendRequest Function will send request to server for start/stop time entry..." alt="" coords="538,71,742,98"/>
+</map>

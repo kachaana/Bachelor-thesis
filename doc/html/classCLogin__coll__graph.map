@@ -1,0 +1,4 @@
+<map id="CLogin" name="CLogin">
+<area shape="rect" id="node2" href="$classIA__CLogin.html" title="{IA_CLogin\n|# _is_logged\l|+ IA_CLogin()\l+ ~IA_CLogin()\l+ authorizationSuccess()\l+ on_ButtonLogIn_clicked()\l}" alt="" coords="5,316,187,437"/>
+<area shape="rect" id="node4" href="$classIA__CHTTPReceiver.html" title="{IA_CHTTPReceiver\n||+ sendRequest()\l+ setTimeEntryItem()\l+ authentication()\l+ HTTPStatusCode()\l}" alt="" coords="136,132,283,253"/>
+</map>

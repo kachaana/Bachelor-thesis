@@ -1,0 +1,3 @@
+<map id="IA_CToggl" name="IA_CToggl">
+<area shape="rect" id="node3" href="$classCToggl.html" title="{CToggl\n|+ userNameLabel\l+ buttonStart\l+ buttonDes\l+ buttonSet\l+ iconsAvailable\l|+ CToggl()\l+ ~CToggl()\l+ CToggl()\l+ operator=()\l+ setIconStopStart()\l+ setAction()\l+ getIsStart()\l+ setSettingsMenu()\l+ setTimeEntryList()\l+ setFileManager()\l+ getTimerTable()\l+ getTimeEntryList()\l+ setUsername()\l+ on_ButtonStart_clicked()\l+ on_ButtonDes_clicked()\l+ on_ButtonSettings_clicked()\l+ updateTable()\l+ calculate()\l}" alt="" coords="5,388,203,773"/>
+</map>

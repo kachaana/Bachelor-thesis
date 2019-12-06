@@ -1,0 +1,4 @@
+<map id="CHTTPReceiver::sendRequest" name="CHTTPReceiver::sendRequest">
+<area shape="rect" id="node2" href="$classCHTTPReceiver.html#a89fbad04ac34292edb59bbbd0a4e5104" title="CHTTPReceiver::replyFinished Will be called once reply object is ready to proceed. " alt="" coords="257,5,461,32"/>
+<area shape="rect" id="node3" href="$classCHTTPReceiver.html#a0e79cd1e6bf464be0420de66685a3398" title="CHTTPReceiver::HTTPStatusCode Function returns standard HTTP response code. " alt="" coords="509,5,740,32"/>
+</map>
